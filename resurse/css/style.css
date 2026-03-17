@@ -6,6 +6,54 @@ img, video, iframe, embed, picture {
     max-width: 100%;
     height: auto;
 }
+em, i {
+    font-style: italic;
+}
+strong, b {
+    font-weight: bold;
+}
+
+q {
+    quotes: "„" "”";
+    font-style: italic;
+    color: var(--culoare-principala);
+}
+
+q::before {
+    content: open-quote;
+}
+
+q::after {
+    content: close-quote;
+}
+
+cite {
+    font-weight: italic;
+    font-size: 0.9rem;
+}
+ul {
+  list-style-type: disc; 
+  margin-left: 2rem; 
+  margin-bottom: 1.5rem;
+}
+
+li {
+  padding-bottom: 0.5rem; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem; 
+}
+
+th, td {
+  padding: 1rem; 
+  border: 0.125rem solid var(--culoare-text); 
+}
+p{  font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
 
 body {
     --culoare-principala: #1E3A8A;
@@ -17,10 +65,11 @@ body {
     --grid-gap: 20px;
     --box-padding: 20px;
     --raza-colturi: 10px;
-
+    width:1200px;
     background-color: var(--culoare-background);
     color: var(--culoare-text);
     font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
     margin: 0 var(--spatiere-laterala);
     padding: 0;
     transition: margin 0.3s ease;
@@ -61,7 +110,7 @@ header h1 i {
 }
 
 h1 { font-size: 2.2rem; margin: 0 0 10px 0; }
-h2 { font-size: 1.8rem; color: var(--culoare-principala); border-bottom: 2px solid var(--culoare-secundara); margin-top: 0; }
+h2 { font-size: 1.8rem; color: var(--culoare-principala); border-bottom: 2px solid var(--culoare-secundara); margin-top: 0; margin-bottom: 15px; }
 h3 { font-size: 1.3rem; color: var(--culoare-principala); }
 p, li, dd, dt, th, td, summary, caption { font-size: 1rem; }
 
@@ -107,7 +156,7 @@ nav li { display: inline; margin-right: 15px; }
     padding: var(--box-padding);
     background-color: white;
     border-radius: var(--raza-colturi);
-    box-shadow: 4px 4px 0px rgba(0,0,0,0.05);
+    box-shadow: 4px 4px 0px rgba(0, 0,0,0.5);
 }
 
 #welcome { grid-area: z1; }
@@ -226,6 +275,8 @@ tbody tr:hover td {
     flex-direction: row;
     align-items: flex-start;
     gap: 20px;
+    margin-bottom: 20px;
+    margin-top: 15px;
 }
 
 .taburi-iframe {
@@ -258,8 +309,6 @@ tbody tr:hover td {
     background-color: #ffffff;
     color: var(--culoare-principala);
     outline: none;
-    position: relative;
-    z-index: 2;
 }
 
 .container-iframe iframe {
@@ -268,8 +317,6 @@ tbody tr:hover td {
     height: 315px;
     border: 2px solid var(--culoare-text);
     border-radius: var(--raza-colturi);
-    position: relative;
-    z-index: 1;
 }
 
 @media (max-width: 850px) {

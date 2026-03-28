@@ -65,13 +65,14 @@ body {
     --grid-gap: 20px;
     --box-padding: 20px;
     --raza-colturi: 10px;
-    width:1200px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 var (--spatiere-laterala);
+    margin: 0 auto;
     background-color: var(--culoare-background);
     color: var(--culoare-text);
     font-family: 'Nunito', sans-serif;
     line-height: 1.6;
-    margin: 0 var(--spatiere-laterala);
-    padding: 0;
     transition: margin 0.3s ease;
 }
 
@@ -103,42 +104,12 @@ header h1 i {
         --spatiere-laterala: 5px;
         --grid-gap: 10px;
     }
-    *, *::before, *::after {
+    /* *, *::before, *::after {
         animation: none !important;
         transition: none !important;
-    }
+    } */
 }
-
-/* @media print {
-    header, footer, nav, #link-top{
-        display: none!important;
-    }
-    iframe, video,img,picture,embed,.container-iframe, .taburi-iframe, figcaption{
-        display: none!important;
-    }
    
-    #watermark{
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform:translate(-50%, -50%);
-        width: 60%;
-        height: 10%;
-        font-size: 5rem;
-        color: rgba(0, 0, 0, 0.1);
-        z-index: 40;
-    }
-    #watermark::before {
-        content: "La TrainMag - Lumea în miniatură";
-    }
-    a{
-        color: var(--culoare-text) !important;
-        text-decoration: none !important;
-    }
-    #grid-pagina{
-        display: block;
-    }
-} */
 
 h1 { font-size: 2.2rem; margin: 0 0 10px 0; }
 h2 { font-size: 1.8rem; color: var(--culoare-principala); border-bottom: 2px solid var(--culoare-secundara); margin-top: 0; margin-bottom: 15px; }

@@ -20,6 +20,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
   <link rel="stylesheet" href="/resurse/css/reset.css">
   <link rel="stylesheet" href="/resurse/css/style.css">
+  <link rel="stylesheet" href="/resurse/css/print.css">
+  <link rel="stylesheet" href="/resurse/css/stil_meniu.css">
 </head>
 
 <body id="acasa">
@@ -30,15 +32,31 @@
     </h1>
     <img src="resurse/imagini/logo/logotrainmag.png" alt="Sigla magazinului TrainMag" width="200">
     <nav>
-      <ul>
-        <li><a href="#acasa">Acasă</a></li>
-        <li><a href="#welcome">Despre Noi</a></li>
-        <li><a href="#promotii">Oferte Speciale</a></li>
-        <li><a href="#orar">Evenimente</a></li>
-        <li><a href="#specificatii">Specificații Tehnice</a></li>
-        <li><a href="#index-intrebari">Întrebări Frecvente (FAQ)</a></li>
-        <li><a href="produse.html">Catalog Produse</a></li>
-        <li><a href="contact.html">Contact și Locație</a></li>
+      <input type="checkbox" id="burger-toggle">
+      <label for="burger-toggle" class="burger-icon">
+      <i class="fa-solid fa-bars"></i>
+  </label>
+      <ul id="meniu-principal">
+        <li>
+          <a href="#acasa" title="Acasă"><i class="fa-solid fa-home"></i><span>Acasă</span></a>
+            <ul class="submeniu">
+              <li><a href="#welcome" title="Despre Noi">Despre Noi</a></li>
+              <li><a href="#promotii" title="Oferte Speciale">Oferte Speciale</a></li>
+              <li><a href="#orar" title="Evenimente">Evenimente</a></li>
+              <li><a href="#specificatii" title="Specificații Tehnice">Specificații Tehnice</a></li>
+              <li><a href="#index-intrebari" title="Întrebări Frecvente (FAQ)">Întrebări Frecvente (FAQ)</a></li>
+              </ul>
+        </li>
+        <li><a href="produse.html" title="Catalog Produse"><i class="fa-solid fa-box-open"></i> Catalog Produse</a>
+          <ul class="submeniu">
+            <li><a href="produse.html#trenuri" title="Trenuri și Locomotive">Trenuri și Locomotive</a></li>
+            <li><a href="produse.html#vagoane" title="Vagoane">Vagoane</a></li>
+            <li><a href="produse.html#autobuze" title="Autobuze și Transport în Comun">Autobuze și Transport în Comun</a></li>
+            <li><a href="produse.html#accesorii" title="Accesorii pentru Diorame">Accesorii pentru Diorame</a></li>
+          </ul>
+        
+        </li>
+        <li><a href="contact.html" title="Contact și Locație"><i class="fa-solid fa-address-card"></i> Contact și Locație</a></li>
       </ul>
     </nav>
   </header>
@@ -50,7 +68,8 @@
         <h2><i class="fa-solid fa-train"></i> Lumea în miniatură</h2>
         <p>Magazinul pasionaților de modelism feroviar și transport în comun</p>
       </hgroup>
-      <!-- <p id="watermark">....</p> -->
+      <div class="watermark">Matei<br>Pavel</div>
+      <div class="banner">Acesta este un proiect școlar!!</div>
       <p>La TrainMag, pasiunea prinde viață. Oferim o gamă variată de <b>machete de trenuri</b> și transport in comun interurban la prețuri accesibile. Indiferent dacă preferi <b>scara H0</b> sau scara TT sau ești constrâns de spațiul din camera ta, la noi găsești <em>absolut</em> tot ce ai nevoie pentru proiectul tău.</p>
       <p><strong>Atenție! Stocurile pentru edițiile speciale de trenuri se epuizează rapid!</strong></p>
       
@@ -278,8 +297,7 @@
       </a><br><br>
     </address>
     
-    <iframe src="https:/www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3316.279381794988!2d26.097011776679867!3d44.43553547107568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff472f47f047%3A0x493984726f0235f9!2sFaculty%20of%20Mathematics%20and%20Computer%20Science!5e1!3m2!1sen!2sro!4v1772820185343!5m2!1sen!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <br><br>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2266.6205948908873!2d26.09958724467465!3d44.435039662714146!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1ff472f47f047%3A0x493984726f0235f9!2sFaculty%20of%20Mathematics%20and%20Computer%20Science!5e1!3m2!1sen!2sro!4v1774369728345!5m2!1sen!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     
     <embed src="./resurse/pdf/catalogtrainmag.pdf" type="application/pdf" width="600" height="600">
     <br><br>

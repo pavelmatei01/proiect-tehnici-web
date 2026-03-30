@@ -14,9 +14,6 @@
     h1{
         text-align: center;
     }
-    nav ul{display:flex;
-           flex-direction: column;
-    }
     
     .watermark{
         display:block !important;
@@ -46,10 +43,9 @@
         display: block!important;
         position:absolute;
         width:50%;
-        margin:0;
         top:0;
         right:0;
-        border:4px;
+        border-width:4px;
         border-color:black;
         border-style: double;
         text-align: center;
@@ -59,7 +55,6 @@
         size:A4 portrait;
         margin-bottom: 2cm;
         margin-top:2cm;
-        border-radius:20cm;
 
     }
     @page:left{
@@ -70,4 +65,4 @@
         margin-left:1cm;
         margin-right:2cm;
     }
-} 
+    } 

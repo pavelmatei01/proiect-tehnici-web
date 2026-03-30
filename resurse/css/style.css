@@ -65,7 +65,6 @@ body {
     --grid-gap: 20px;
     --box-padding: 20px;
     --raza-colturi: 10px;
-    width: 100%;
     max-width: 1200px;
     padding: 0 var (--spatiere-laterala);
     margin: 0 auto;

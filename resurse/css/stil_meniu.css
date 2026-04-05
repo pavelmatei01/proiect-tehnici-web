@@ -105,7 +105,7 @@ nav ul#meniu-principal > li:hover .submeniu {
     position: absolute;
     top: 100%;
     left: 0;
-    width: 250px;
+    width: 100%;
     flex-direction: column;
     background-color: var(--culoare-principala);
     z-index: 1000;
@@ -122,7 +122,6 @@ nav ul#meniu-principal > li:hover .submeniu {
     transform-origin: top left;
     transform: scaleY(0);
     max-height: 0;
-    transition: transform 0.4s ease-in-out, max-height 0.4s ease-in-out;
   }
   nav ul#meniu-principal li:hover .submeniu {
     transform: scaleY(1);
@@ -131,6 +130,11 @@ nav ul#meniu-principal > li:hover .submeniu {
   }
   #burger-toggle:checked ~ ul#meniu-principal {
     transform: scale(1);
+    transition: transform 0.4s ease-in-out;
+  }
+  #burger-toggle:not(:checked) ~ ul#meniu-principal {
+    transition: none;
+    transform: scale(0);
   }
   nav ul#meniu-principal > li:first-child > a {
     text-align: center;

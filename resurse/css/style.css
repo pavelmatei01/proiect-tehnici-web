@@ -124,6 +124,7 @@ a:hover {
     color: var(--culoare-secundara);
 }
 
+
 header, footer {
     background-color: var(--culoare-principala);
     color: var(--culoare-background);

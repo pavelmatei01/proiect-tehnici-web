@@ -113,6 +113,9 @@ nav ul#meniu-principal > li:hover .submeniu {
     transform: scale(0);
     transition: transform 0.4s ease-in-out;
   }
+  nav ul#meniu-principal i {
+    display: none;
+  }
   nav ul#meniu-principal li {
     width: 100%;
   }
@@ -138,11 +141,15 @@ nav ul#meniu-principal > li:hover .submeniu {
   }
   nav ul#meniu-principal > li:first-child > a {
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   nav ul#meniu-principal > li:first-child > a span {
     display: none;
   }
-  nav ul#meniu-principal > li:first-child > a i.fa-home {
+  nav ul#meniu-principal > li:first-child > a i, nav ul#meniu-principal > li:first-child > a i.fa-home {
+    display: block !important;
     font-size: 2rem;
   }
   nav ul#meniu-principal > li .submeniu li a::before {

@@ -62,7 +62,7 @@ nav {
               position: absolute;
               left: -20px;
               opacity: 0;
-              transition: all $timp-tranzitie ease-in-out;
+              transition: all $timp-tranzitie ease-in-out, opacity $timp-tranzitie ease-in-out;
               color: var(--culoare-highlight);
             }
 

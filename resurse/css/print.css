@@ -32,6 +32,80 @@
         color: var(--culoare-text) !important;
         text-decoration: none !important;
     }
+    nav, #meniu-principal, .submeniu {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: static !important;
+        transform: none !important; 
+        background: transparent !important;
+        height: auto !important;
+        max-height: none !important;
+    }
+
+    
+    nav ul#meniu-principal li a, 
+    nav ul#meniu-principal li a span,
+    nav ul#meniu-principal li i {
+        color: #000 !important; 
+        text-decoration: none !important;
+        font-size: 12pt !important;
+        background: none !important;
+    }
+
+    nav ul#meniu-principal > li:first-child > a i.fa-home {
+        display: none !important;
+    }
+
+    
+    nav ul#meniu-principal > li:first-child > a span {
+        display: inline !important;
+        font-size: 12pt !important;
+        color: #000 !important;
+    }
+
+    
+    nav ul#meniu-principal > li:first-child > a {
+        display: block !important;
+        text-align: left !important;
+        justify-content: flex-start !important;
+        padding: 0 !important;
+    } 
+    nav ul#meniu-principal {
+        padding-left: 0;
+        margin-top: 10px;
+        list-style-type: none !important;
+    }
+
+    nav ul#meniu-principal > li {
+        display: block !important;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #eee; 
+    }
+
+    nav ul#meniu-principal .submeniu {
+        padding-left: 30px !important;
+        margin-bottom: 10px;
+        list-style-type: none !important; 
+    }
+
+    nav ul#meniu-principal .submeniu li {
+        display: list-item !important;
+        margin-bottom: 3px;
+    }
+
+    
+    #burger-toggle, 
+    .burger-icon, 
+    .fa-bars,
+    #link-top {
+        display: none !important;
+    }
+
+    header h1 i {
+        animation: none !important; 
+        color: #000 !important;
+    }
     #grid-pagina{
         display: block;
         break-inside: avoid;
@@ -51,6 +125,7 @@
         text-align: center;
         background-color: white;
     }
+   
     @page{
         size:A4 portrait;
         margin-bottom: 2cm;

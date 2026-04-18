@@ -1,0 +1,36 @@
+{
+  "name": "trainmag",
+  "version": "1.0.0",
+  "description": "Magazin dedicat pasionaților de modelism feroviar. Oferim machete de trenuri, vagoane și accesorii pentru diorame.",
+  "keywords": [
+    "modelism",
+    "machete",
+    "trenuri",
+    "diorame",
+    "h0",
+    "magazin",
+    "express",
+    "ejs"
+  ],
+  "homepage": "https://github.com/pavelmatei01/proiect-tehnici-web#readme",
+  "bugs": {
+    "url": "https://github.com/pavelmatei01/proiect-tehnici-web/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pavelmatei01/proiect-tehnici-web.git"
+  },
+  "license": "ISC",
+  "author": "Matei Pavel",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^5.0.2",
+    "express": "^5.2.1",
+    "sass": "^1.99.0",
+    "sharp": "^0.34.5"
+  }
+}

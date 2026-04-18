@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <%- include('../fragmente/head') %>
+    <title>TrainMag | Acasă</title>
+    <meta name="description" content="TrainMag este magazinul tău dedicat pasionaților de modelism feroviar. Oferim machete de trenuri, locomotive, vagoane, autobuze și accesorii pentru diorame la un preț accesibil.">
+    <meta name="keywords" content="machete trenuri, magazin trenulete electrice, diorame feroviare, scara h0, machete autobuze">
+</head>
+
+<body id="acasa">
+    <%- include('../fragmente/header') %>
+
+    <main id="grid-pagina">
+        <section id="welcome">
+            <hgroup>
+                <h2><i class="fa-solid fa-train"></i> Lumea în miniatură</h2>
+                <p>Magazinul pasionaților de modelism feroviar și transport în comun</p>
+            </hgroup>
+            <div class="watermark">Matei<br>Pavel</div>
+            <div class="banner">Acesta este un proiect școlar!!</div>
+            <p>La TrainMag, pasiunea prinde viață. Oferim o gamă variată de <b>machete de trenuri</b> și transport in comun interurban la prețuri accesibile. Indiferent dacă preferi <b>scara H0</b> sau scara TT sau ești constrâns de spațiul din camera ta, la noi găsești <em>absolut</em> tot ce ai nevoie pentru proiectul tău.</p>
+            <p><strong>Atenție! Stocurile pentru edițiile speciale de trenuri se epuizează rapid!</strong></p>
+            
+            <aside id="ce-este-modelismul">
+                <h3>Ce este modelismul?</h3>
+                <p>Modelismul este activitatea de realizare la scară a unor modele de mașini și aparate, în general cu caracter demonstrativ, având posibilități de propulsie comandată sau auto-comandată.</p>
+                <p>Pentru pasionații de detalii, recomandăm tehnici de <i lang="en">weathering</i> (uzură controlată) pentru a da realism materialului rulant. De asemenea, o <dfn>dioramă</dfn> (reprezentare tridimensională, miniaturală sau la scară, a unei scene, a unui peisaj) devine mult mai vie dacă sunt integrate și lumini digitale.</p>
+                <p><q>Modelismul este în primul rând un univers. Un univers frumos ce functioneaza după alte reguli.</q> (Sursa: <cite>Inginer Mircea Dorobanțu, zona3d.ro</cite>).</p>
+            </aside>
+            
+            <h3>Scări de modelism populare:</h3>
+            <dl>
+                <dt>Scara H0 (1:87)</dt>
+                <dd>Cea mai populară scară la nivel mondial, oferind un echilibru excelent între detaliu și spațiul necesar.</dd>
+                <dt>Scara TT (1:120)</dt>
+                <dd>O scară ideală pentru apartamente, foarte populară în fostele țări comuniste.</dd>
+            </dl>
+        </section>
+
+        <article id="specificatii">
+            <h2>Specificații Tehnice Scări Modelism</h2>
+            <div style="overflow-x: auto;">
+                <table border="1">
+                    <caption>Comparație între cele mai populare scări feroviare</caption>
+                    <thead>
+                        <tr>
+                            <th>Denumire Scară</th><th>Proporție</th><th>Ecartament șină (mm)</th><th>Nivel Detaliu Recomandat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Scara 1</td><td>1:32</td><td>45.0</td><td>Extrem de ridicat (pentru grădină)</td></tr>
+                        <tr><td>Scara 0</td><td>1:45</td><td>32.0</td><td>Foarte ridicat</td></tr>
+                        <tr><td>Scara H0</td><td>1:87</td><td rowspan="2">16.5</td><td rowspan="3">Ridicat (standardul în domeniu)</td></tr>
+                        <tr><td>Scara 00</td><td>1:76</td></tr>
+                        <tr><td>Scara TT</td><td>1:120</td><td>12.0</td></tr>
+                        <tr><td>Scara N</td><td>1:160</td><td>9.0</td><td>Mediu (excelent pentru spații mici)</td></tr>
+                        <tr><td>Scara Z</td><td>1:220</td><td>6.0</td><td>Minim (recomandat pentru spații foarte mici)</td></tr>
+                    </tbody>
+                    <tfoot>
+                        <tr><td colspan="4">Date preluate din standardele NEM (Normen Europäischer Modellbahnen).</td></tr>
+                    </tfoot>
+                </table>
+            </div>
+        </article>
+       
+        <section id="orar">
+            <h2>Calendar Evenimente TrainMag</h2>
+            <ul>
+                <li><time datetime="2026-04-15T10:00">15 Aprilie 2026, ora 10:00</time> - <b>Atelier de Peisagistică</b>: Învățăm să montăm iarbă electrostatică și copaci.</li>
+                <li><time datetime="2026-05-20T14:00">20 Mai 2026, ora 14:00</time> - <b>Expoziția "Trenuri de Epocă"</b>: Prezentarea colecțiilor private. Intrare liberă.</li>
+                <li><time datetime="2026-08-16T18:00">16 august 2026, ora 18:00:</time> - <b>Concurs de modelism</b>: Alegem reprezentantul nostru pentru turneul internațional.</li>
+            </ul>
+        </section>
+
+        <section id="zona4-anunturi" class="placeholder-box">
+            <h3>Anunțuri</h3>
+            <p>Săptămâna viitoare primim stoc nou de locomotive digitale!</p>
+        </section>
+
+        <section id="zona5-utilizatori" class="placeholder-box">
+            <h3>Utilizatori Online</h3>
+            <p>În acest moment sunt 12 pasionați pe site.</p>
+        </section>
+
+        <section id="zona6-statistici" class="placeholder-box">
+            <h3>Statistici utilizator</h3>
+            <p>Bine ai venit! IP-ul tău de conectare este: <strong><%- ip %></strong></p>
+        </section>
+
+        <section id="zona7-server" class="placeholder-box">
+            <h3>Date despre site/server</h3>
+            <p>Server uptime: 99.9%. Ping: 24ms.</p>
+        </section>
+
+        <section id="zona8-diverse">
+            <section id="promotii">
+                <h2>Oferte Speciale și Stocuri</h2>
+                <article>
+                    <h3>Set Start Digital SJ</h3>
+                    <p>Pachetul ideal pentru începători. Preț redus de la <s><b>1500</b> lei</s> la <ins><b>950</b> lei</ins>.</p>
+                </article>
+                <article>
+                    <h3>Disponibilitate produse populare</h3>
+                    <p>Locomotivă electrică verde: <meter value="96" min="0" max="100" low="15" high="70" optimum="90">96%</meter></p>
+                    <p>Locomotivă Siemens EuroSprinter: <meter value="12" min="0" max="100" low="15" high="70" optimum="90">12%</meter></p>
+                </article>
+            </section>
+            <div id="video-propriu" style="margin-bottom: 30px;">
+                <h2>Prezentare Dioramă de Iarnă</h2>
+                    <video controls poster="/resurse/imagini/poster.jpg" preload="auto" class="video-prezentare">
+                        <source src="/resurse/video/prezentare.mp4" type="video/mp4">
+                        <source src="/resurse/video/prezentare.webm" type="video/webm">
+            
+                        <track src="/resurse/video/ro.vtt" kind="subtitles" srclang="ro" label="Română" default>
+                        <track src="/resurse/video/de.vtt" kind="subtitles" srclang="de" label="Deutsch">
+            
+                         Mesaj de fallback: Browserul tău nu suportă elementul video.
+                    </video>
+            </div>
+            <aside id="extras">
+             <h2>Detalii extra despre modelism:</h2>
+                <ul>
+                    <li>Dacă ești pasionat despre modelism feroviar, ai putea să citești mai multe despre modelism <a href="https://en.wikipedia.org/wiki/Rail_transport_modelling" target="_blank">apăsând acest link</a></li>
+                    <li><a href="https://en.wikipedia.org/wiki/Rail_transport_modelling_scales">https://en.wikipedia.org/wiki/<wbr>Rail_transport_<wbr>modelling_scales</a></li>
+                </ul>
+            </aside>
+            <section id="index-intrebari">
+                <h2>Întrebări Frecvente (FAQ)</h2>
+                <details>
+                    <summary>Ce scara ar trebui să aleg dacă locuiesc la bloc?</summary>
+                    <p>Dacă spațiul este o problemă, recomandăm scările TT (1:120) sau N (1:160).</p>
+                </details>
+            </section>
+        </section>
+    </main>
+
+    <%- include('../fragmente/footer') %>
+</body>
+</html>

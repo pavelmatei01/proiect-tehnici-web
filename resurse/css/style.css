@@ -341,3 +341,74 @@ tbody tr:hover td {
 ins { color: var(--culoare-highlight); font-weight: bold; text-decoration: none; }
 details { margin-bottom: 10px; border-bottom: 1px dotted var(--culoare-secundara); padding-bottom: 5px; }
 summary { cursor: pointer; color: var(--culoare-principala); }
+
+
+/* //pt videoclip    */
+
+.video-prezentare {
+    width: 100%;
+    min-width: 300px;
+    max-width: 800px;
+    display: block;
+    margin: 20px auto;
+    border: 2px solid var(--culoare-text);
+    border-radius: var(--raza-colturi);
+}
+
+::cue {
+    background-image: linear-gradient(to right, #1E3A8A, #000000);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+    font-size: 1.2rem;
+    white-space: pre-line;
+    line-height: 1.4;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+
+
+/* stilizare linkuri */
+
+a:visited {
+    color: var(--culoare-secundara); 
+}
+
+a[href^="http"]::before {
+    content: "⮳ ";
+    font-size: 1.5em;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+a[href^="http"]:hover::before {
+    color: var(--culoare-evidentiere, #ff6600);
+}
+
+main a {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    width: fit-content;
+    padding: 2px 12px;
+    border: 1px solid transparent;
+    text-decoration: none;
+    background-image: radial-gradient(ellipse at center, var(--culoare-principala) 0%, var(--culoare-principala) 40%, transparent 80%, transparent 100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 0% 0%;
+    transition: background-size 0.4s ease;
+}
+
+main a::before {
+    content: none !important;
+}
+
+main a:hover {
+    background-size: 100% 100%;
+}
+
+main a:active {
+    border-color: var(--culoare-text); 
+}

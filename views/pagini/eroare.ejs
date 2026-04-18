@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <%- include('../fragmente/head') %>
+    <title>TrainMag | Eroare <%= locals.titlu %></title>
+</head>
+<body id="eroare">
+    <%- include('../fragmente/header') %>
+
+    <main id="grid-pagina" style="display: block; text-align: center; padding: 50px;">
+        <section style="border: 2px solid var(--culoare-highlight);">
+            <h2><i class="fa-solid fa-triangle-exclamation"></i> <%= locals.titlu %></h2>
+            <p style="font-size: 1.2rem; margin: 20px 0;"><strong><%= locals.text %></strong></p>
+            
+            <img src="<%= locals.imagine %>" alt="Imagine eroare" style="max-width: 300px; margin-top: 20px; border-radius: 10px;">
+            
+            <br><br>
+            <a href="/" style="display: inline-block; padding: 10px 20px; background-color: var(--culoare-secundara); color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">Întoarce-te pe pagina principală</a>
+        </section>
+    </main>
+
+    <%- include('../fragmente/footer') %>
+</body>
+</html>

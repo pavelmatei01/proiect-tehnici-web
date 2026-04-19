@@ -9,9 +9,9 @@ app.set("view engine", "ejs");
 obGlobal={
     obErori:null,
     obImagini:null,
-    folderScss:path.join(__dirname,"resurse/css"),
-    folderCss:path.join(__dirname,"resurse/css"),
-    folderBackup:path.join(__dirname,"backup")
+    folderScss:path.join(__dirname,"/resurse/css"),
+    folderCss:path.join(__dirname,"/resurse/css"),
+    folderBackup:path.join(__dirname,"/backup")
 }
 
 console.log("Folder index.js", __dirname);
@@ -27,21 +27,21 @@ for (let folder of vect_foldere){
 }
 
 app.get(["/","/index","/home"], function(req, res) {
-    res.render("pagini/index",{
+    res.render("/pagini/index",{
         ip:req.ip
     });
 });
 // app.get("/service", function(req, res) {
 //     res.render("pagini/service");
 // });
-app.use("/resurse",express.static(path.join(__dirname,"resurse")));
+app.use("/resurse",express.static(path.join(__dirname,"/resurse")));
 
 app.get("/favicon.ico", function(req, res){
-    res.sendFile(path.join(__dirname,"resurse/imagini/ico/favicon.ico"))
+    res.sendFile(path.join(__dirname,"/resurse/imagini/ico/favicon.ico"))
 });
 
 function verificareEroriInitiala() {
-    let caleJson = path.join(__dirname, "resurse/json/erori.json");
+    let caleJson = path.join(__dirname, "/resurse/json/erori.json");
 
     // Fisierul erori.json nu exista
     if (!fs.existsSync(caleJson)) {
@@ -141,8 +141,9 @@ function verificareEroriInitiala() {
 }
 function initErori(){
     verificareEroriInitiala();
-    let continut = fs.readFileSync(path.join(__dirname,"resurse/json/erori.json")).toString("utf-8")
-    let erori=obGlobal.obErori=JSON.parse(continut)
+    let continut = fs.readFileSync(path.join(__dirname,"/resurse/json/erori.json")).toString("utf-8")
+    let erori = JSON.parse(continut);
+    obGlobal.obErori = erori;
     let err_default=erori.eroare_default
     err_default.imagine=path.join(erori.cale_baza, err_default.imagine)
     for (let eroare of erori.info_erori){

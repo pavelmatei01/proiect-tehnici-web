@@ -1,0 +1,27 @@
+<section id="sectiune-galerie">
+    <h2>Galerie Foto - <span style="text-transform: capitalize;"><%= anotimp %></span></h2>
+    <div id="galerie-statica">
+        <% for(let i = 0; i < imagini.length; i++) { %>
+            <figure>
+                <picture>
+                    <source media="(max-width: 767px)" srcset="<%= imagini[i].fisier_mic %>">
+                    <source media="(max-width: 1199px)" srcset="<%= imagini[i].fisier_mediu %>">
+                    <img src="<%= imagini[i].fisier %>" 
+                         alt="<%= imagini[i].alt || imagini[i].titlu %>" 
+                         title="<%= imagini[i].text_descriere %>">
+                </picture>
+                <figcaption>
+                    <span class="index-roman"></span> 
+                    <strong><%= imagini[i].titlu %></strong>
+                    <% if (imagini[i].atribuire) { %>
+                        <br>
+                        <small class="licenta">
+                            Autor: <%= imagini[i].atribuire.autor %> 
+                            (<a href="<%= imagini[i].atribuire.sursa %>" target="_blank" rel="noopener noreferrer"><%= imagini[i].atribuire.licenta %></a>)
+                        </small>
+                    <% } %>
+                </figcaption>
+            </figure>
+        <% } %>
+    </div>
+</section>

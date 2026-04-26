@@ -1,0 +1,21 @@
+$font-family-base: 'Nunito', sans-serif;
+$body-bg: #F8FAFC;
+$primary: #1E3A8A;
+$secondary: #F59E0B;
+$btn-color: #ffffff;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 800px,
+  lg: 1100px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+$border-radius: 12px;
+$h1-font-size: 2.5rem;
+$h2-font-size: 2rem;
+$spacer: 1.25rem;
+
+@import "../../node_modules/bootstrap/scss/bootstrap";

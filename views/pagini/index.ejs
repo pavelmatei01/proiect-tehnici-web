@@ -13,14 +13,26 @@
     <main id="grid-pagina">
         <section id="welcome">
             <hgroup>
+                <div id="text" style="margin-bottom: 20px; color: var(--culoare-text);">
+                    TrainMag
+                    <div id="text-reflectat">TrainMag</div>
+                </div>
                 <h2><i class="fa-solid fa-train"></i> Lumea în miniatură</h2>
                 <p>Magazinul pasionaților de modelism feroviar și transport în comun</p>
             </hgroup>
             <div class="watermark">Matei<br>Pavel</div>
             <div class="banner">Acesta este un proiect școlar!!</div>
+            <div class="container-stiri">
+                <p class="text-animat">
+                    Ultimele noutăți: Au sosit noile locomotive de epocă! • Reduceri de 10% la garniturile de primăvară • Abonează-te la newsletter!
+            </p>
+            </div>
             <p>La TrainMag, pasiunea prinde viață. Oferim o gamă variată de <b>machete de trenuri</b> și transport in comun interurban la prețuri accesibile. Indiferent dacă preferi <b>scara H0</b> sau scara TT sau ești constrâns de spațiul din camera ta, la noi găsești <em>absolut</em> tot ce ai nevoie pentru proiectul tău.</p>
             <p><strong>Atenție! Stocurile pentru edițiile speciale de trenuri se epuizează rapid!</strong></p>
-            
+             <div class="bg-primary text-white p-3 rounded mt-4">
+                    <h5>🚂 Curiozitate Feroviară</h5>
+                    <p class="mb-0">Prima linie de cale ferată din România a fost inaugurată în anul 1869, pe ruta București - Giurgiu. La TrainMag, poți recrea istoria feroviară chiar la tine acasă!</p>
+            </div>
             <aside id="ce-este-modelismul">
                 <h3>Ce este modelismul?</h3>
                 <p>Modelismul este activitatea de realizare la scară a unor modele de mașini și aparate, în general cu caracter demonstrativ, având posibilități de propulsie comandată sau auto-comandată.</p>
@@ -36,6 +48,7 @@
                 <dd>O scară ideală pentru apartamente, foarte populară în fostele țări comuniste.</dd>
             </dl>
         </section>
+        
 
         <article id="specificatii">
             <h2>Specificații Tehnice Scări Modelism</h2>
@@ -62,9 +75,9 @@
                 </table>
             </div>
         </article>
-       
         <section id="orar">
             <h2>Calendar Evenimente TrainMag</h2>
+            <div class="imagine-duotone"></div>
             <ul>
                 <li><time datetime="2026-04-15T10:00">15 Aprilie 2026, ora 10:00</time> - <b>Atelier de Peisagistică</b>: Învățăm să montăm iarbă electrostatică și copaci.</li>
                 <li><time datetime="2026-05-20T14:00">20 Mai 2026, ora 14:00</time> - <b>Expoziția "Trenuri de Epocă"</b>: Prezentarea colecțiilor private. Intrare liberă.</li>
@@ -117,6 +130,7 @@
                          Mesaj de fallback: Browserul tău nu suportă elementul video.
                     </video>
             </div>
+
             <aside id="extras">
              <h2>Detalii extra despre modelism:</h2>
                 <ul>
@@ -132,8 +146,9 @@
                 </details>
             </section>
         </section>
+        
     </main>
-
+    <%- include('../fragmente/galerie') %>
     <%- include('../fragmente/footer') %>
 </body>
 </html>

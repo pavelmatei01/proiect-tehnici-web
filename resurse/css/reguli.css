@@ -1,0 +1,19 @@
+main ul {
+    list-style-type: disc !important; 
+    margin-left: 2rem !important; 
+    padding-left: 0 !important;
+}
+
+main a:not(.btn) {
+    color: var(--culoare-principala) !important;
+    text-decoration: underline !important;
+}
+
+main a:not(.btn):hover {
+    color: var(--culoare-secundara) !important;
+}
+
+p { margin-bottom: 1.5rem !important; }
+h1, h2, h3 { margin-top: 0 !important; }
+h2 { margin-bottom: 15px !important; }
+table th, table td { background-color: transparent !important; }

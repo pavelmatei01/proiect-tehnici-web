@@ -28,12 +28,33 @@ for (let folder of vect_foldere){
 
 app.get(["/","/index","/home"], function(req, res) {
     let date = getDateGalerie(getAnotimp());
-    res.render("pagini/index",{
-        ip:req.ip,
+    
+    let optiuniN = [3, 6, 9, 12, 15];
+    let nrImaginiAnimata = optiuniN[Math.floor(Math.random() * optiuniN.length)];
+    
+    let totalImagini = obGlobal.obImagini.imagini.length;
+    let maxOffset = totalImagini - nrImaginiAnimata;
+    let offset = Math.floor(Math.random() * (maxOffset + 1));
+    let imaginiAnimata = obGlobal.obImagini.imagini.slice(offset, offset + nrImaginiAnimata);
+    
+    let continutScss = `
+$nr-imagini: ${nrImaginiAnimata};
+@import "galerie_animata_baza";
+`;
+    let caleScssDinamic = path.join(obGlobal.folderScss, "galerie_animata_dinamic.scss");
+    let caleCssDinamic = path.join(obGlobal.folderCss, "galerie_animata_dinamic.css");
+    
+    fs.writeFileSync(caleScssDinamic, continutScss);
+    compileazaScss(caleScssDinamic, caleCssDinamic);
+
+    res.render("pagini/index", {
+        ip: req.ip,
         imagini: date.imagini,
-        anotimp: date.anotimp
+        anotimp: date.anotimp,
+        imaginiAnimata: imaginiAnimata 
     });
 });
+
 app.get("/galerie", function(req, res) {
     let date = getDateGalerie(getAnotimp());
     res.render("pagini/galerie", { 
@@ -41,9 +62,7 @@ app.get("/galerie", function(req, res) {
         anotimp: date.anotimp 
     });
 });
-// app.get("/service", function(req, res) {
-//     res.render("pagini/service");
-// });
+
 app.use("/resurse",express.static(path.join(__dirname,"/resurse")));
 
 app.get("/favicon.ico", function(req, res){
@@ -53,7 +72,6 @@ app.get("/favicon.ico", function(req, res){
 function verificareEroriInitiala() {
     let caleJson = path.join(__dirname, "/resurse/json/erori.json");
 
-    // Fisierul erori.json nu exista
     if (!fs.existsSync(caleJson)) {
         console.error("EROARE FATALA: Fisierul erori.json nu exista! Aplicatia se inchide.");
         process.exit(); 
@@ -61,7 +79,6 @@ function verificareEroriInitiala() {
 
     let textFisier = fs.readFileSync(caleJson).toString("utf-8");
 
-    //Verificare  duplicate
     let blocuriObiecte = textFisier.match(/\{([^}]*)\}/g); 
     if (blocuriObiecte) {
         for (let i = 0; i < blocuriObiecte.length; i++) {
@@ -85,12 +102,10 @@ function verificareEroriInitiala() {
     }
     let erori=JSON.parse(textFisier);
 
-    // Lipsesc proprietatile principale
     if (!erori.info_erori || !erori.cale_baza || !erori.eroare_default) {
         console.error("EROARE: Lipseste una dintre proprietatile: info_erori, cale_baza sau eroare_default!");
     }
 
-    // Lipsesc proprietatile din eroare_default
     if (erori.eroare_default) {
         let def = erori.eroare_default;
         if (!def.titlu || !def.text || !def.imagine) {
@@ -98,7 +113,6 @@ function verificareEroriInitiala() {
         }
     }
 
-    //Verificare foldere si imagini
     let folderExista = false;
     if (erori.cale_baza) {
         
@@ -126,7 +140,6 @@ function verificareEroriInitiala() {
         }
     }
 
-    //Identificatori duplicati 
     if (erori.info_erori) {
         let aparitiiId = {};
         for (let err of erori.info_erori) {
@@ -149,8 +162,7 @@ function verificareEroriInitiala() {
         }
     }
 }
-//galerie statica 
-//initializare imagini: creare fisiere mediu si mic daca nu exista, adaugare proprietati noi in obiectul de imagini pentru a stoca calea catre aceste fisiere
+
 async function initImagini(){
     var continut = fs.readFileSync(path.join(__dirname,"resurse/json/galerie.json")).toString("utf-8");
 
@@ -184,7 +196,7 @@ async function initImagini(){
     }
 }
 initImagini();
-//functie pt anotimp 
+
 function getAnotimp() {
     let luna = new Date().getMonth(); 
     if (luna === 11 || luna === 0 || luna === 1) return "iarna";
@@ -192,7 +204,7 @@ function getAnotimp() {
     if (luna >= 5 && luna <= 7) return "vara";
     return "toamna";
 }
-//functie pt a prelua functiile filtrate   
+
 function getDateGalerie(anotimpCurent) {
     let imaginiAfisate = obGlobal.obImagini.imagini
         .filter(img => img.anotimp === anotimpCurent)
@@ -200,16 +212,11 @@ function getDateGalerie(anotimpCurent) {
     return { imagini: imaginiAfisate, anotimp: anotimpCurent };
 }
 
-
-
-
-//compilare scss in css la pornirea serverului si la modificarea fisierelor scss
 function compileazaScss(caleScss, caleCss){
     if(!caleCss){
-
-        let numeFisExt=path.basename(caleScss); // "folder1/folder2/a.scss" -> "a.scss"
-        let numeFis=numeFisExt.split(".")[0]   /// "a.scss"  -> ["a","scss"]
-        caleCss=numeFis+".css"; // output: a.css
+        let numeFisExt=path.basename(caleScss); 
+        let numeFis=numeFisExt.split(".")[0]  
+        caleCss=numeFis+".css"; 
     }
     
     if (!path.isAbsolute(caleScss))
@@ -221,44 +228,34 @@ function compileazaScss(caleScss, caleCss){
     if (!fs.existsSync(caleBackup)) {
         fs.mkdirSync(caleBackup,{recursive:true})
     }
-    
-  
 
     let numeFisCss=path.basename(caleCss);
     if (fs.existsSync(caleCss)){
-        fs.copyFileSync(caleCss, path.join(obGlobal.folderBackup, "resurse/css",numeFisCss ))// +(new Date()).getTime()
+        fs.copyFileSync(caleCss, path.join(obGlobal.folderBackup, "resurse/css",numeFisCss ))
     }
-    rez=sass.compile(caleScss, {"sourceMap":true});
-    fs.writeFileSync(caleCss,rez.css)
+    
+    try {
+        let rez = sass.compile(caleScss, { sourceMap: true });
+        fs.writeFileSync(caleCss, rez.css);
+    } catch (eroareCompilare) {
+        console.error(`Eroare SASS la compilarea ${caleScss}:`, eroareCompilare.message);
+    }
+    
     if (fs.existsSync(caleCss)) {
-        
         try {
-            
             fs.copyFileSync(caleCss, path.join(caleBackup, numeFisCss));
         } catch (eroare) {
             console.error(`Eroare la copierea în backup a fișierului ${numeFisCss}:`, eroare.message);
         }
     }
-
-    try {
-        let rez = sass.compile(caleScss, { sourceMap: true });
-        fs.writeFileSync(caleCss, rez.css);
-    } catch (eroareCompilare) {
-        
-        console.error(`Eroare SASS la compilarea ${caleScss}:`, eroareCompilare.message);
-    }
-    
 }
 
-
-//la pornirea serverului
 vFisiere=fs.readdirSync(obGlobal.folderScss);
 for( let numeFis of vFisiere ){
     if (path.extname(numeFis)==".scss"){
         compileazaScss(numeFis);
     }
 }
-
 
 fs.watch(obGlobal.folderScss, function(eveniment, numeFis){
     if (eveniment=="change" || eveniment=="rename"){
@@ -295,9 +292,6 @@ function afisareEroare(res,identificator,titlu,text,imagine){
         titlu:titlu||eroare?.titlu||errDefault.titlu, 
         text:text||eroare?.text||errDefault.text});
 }
-// app.get("/eroare", function(req, res) {
-//     afisareEroare(res,404)
-// });
 
 app.get("/*pagina", function(req, res){
     console.log("Cale pagina", req.url);
@@ -321,7 +315,6 @@ app.get("/*pagina", function(req, res){
             }
             else{
                 res.send(rezRandare);
-                // console.log("Rezultat randare", rezRandare);
             }
         });
     }

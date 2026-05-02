@@ -1,0 +1,106 @@
+$nr-imagini: 3 !default;
+
+$timp-afisare: 3s;
+$timp-tranzitie: 1.5s;
+$timp-pas: $timp-afisare + $timp-tranzitie;
+$timp-total: $nr-imagini * $timp-pas;
+
+$p-pas: 100% / $nr-imagini;
+$p-tranzitie: $p-pas * ($timp-tranzitie / $timp-pas);
+$p-afisare: $p-pas - $p-tranzitie;
+
+#container-galerie-animata {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+
+    @media (max-width: 991px) {
+        display: none;
+    }
+}
+
+#galerie-animata {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border: 15px solid transparent;
+    border-image: url('/resurse/imagini/fundal.jpg') 15% stretch;
+    background-color: var(--culoare-background);
+    
+    &:hover figure {
+        animation-play-state: paused;
+    }
+
+    figure {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        opacity: 0;
+        animation: animatie-decupare $timp-total linear infinite;
+        
+        picture, img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        figcaption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            font-size: 1.1rem;
+        }
+    }
+}
+
+@for $i from 0 to $nr-imagini {
+    #galerie-animata figure:nth-child(#{$i + 1}) {
+        animation-delay: ($i * $timp-pas) - $timp-total;
+    }
+}
+
+@keyframes animatie-decupare {
+    0% {
+        clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 0%, 100% 0%);
+        opacity: 1;
+        z-index: 10;
+    }
+    #{$p-afisare} {
+        clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 0%, 100% 0%);
+        opacity: 1;
+        z-index: 10;
+    }
+    #{$p-pas} {
+        clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 0%, 100% 0%);
+        opacity: 1;
+        z-index: 10;
+    }
+    #{$p-pas + 0.001%} {
+        opacity: 0;
+        z-index: 1;
+    }
+    #{100% - $p-tranzitie - 0.001%} {
+        opacity: 0;
+        z-index: 1;
+    }
+    #{100% - $p-tranzitie} {
+        clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 0%, 100% 0%);
+        opacity: 1;
+        z-index: 5;
+    }
+    100% {
+        clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 0%, 100% 0%);
+        opacity: 1;
+        z-index: 5;
+    }
+}

@@ -5,6 +5,7 @@
     <title>TrainMag | Acasă</title>
     <meta name="description" content="TrainMag este magazinul tău dedicat pasionaților de modelism feroviar. Oferim machete de trenuri, locomotive, vagoane, autobuze și accesorii pentru diorame la un preț accesibil.">
     <meta name="keywords" content="machete trenuri, magazin trenulete electrice, diorame feroviare, scara h0, machete autobuze">
+    <link rel="stylesheet" href="/resurse/css/galerie_animata.css">
 </head>
 
 <body id="acasa">
@@ -25,7 +26,7 @@
             <div class="container-stiri">
                 <p class="text-animat">
                     Ultimele noutăți: Au sosit noile locomotive de epocă! • Reduceri de 10% la garniturile de primăvară • Abonează-te la newsletter!
-            </p>
+                </p>
             </div>
             <p>La TrainMag, pasiunea prinde viață. Oferim o gamă variată de <b>machete de trenuri</b> și transport in comun interurban la prețuri accesibile. Indiferent dacă preferi <b>scara H0</b> sau scara TT sau ești constrâns de spațiul din camera ta, la noi găsești <em>absolut</em> tot ce ai nevoie pentru proiectul tău.</p>
             <p><strong>Atenție! Stocurile pentru edițiile speciale de trenuri se epuizează rapid!</strong></p>
@@ -148,7 +149,24 @@
         </section>
         
     </main>
+
+    <section id="container-galerie-animata">
+        <h2 style="text-align: center;">Galerie Animată (<%= imaginiAnimata.length %> imagini)</h2>
+        <div id="galerie-animata">
+            <% for(let i=0; i < imaginiAnimata.length; i++) { %>
+                <figure>
+                    <picture>
+                        <source srcset="<%= imaginiAnimata[i].fisier_mediu %>" media="(max-width: 800px)">
+                        <img src="<%= imaginiAnimata[i].fisier %>" alt="<%= imaginiAnimata[i].alt %>">
+                    </picture>
+                    <figcaption><%= imaginiAnimata[i].titlu %></figcaption>
+                </figure>
+            <% } %>
+        </div>
+    </section>
+
     <%- include('../fragmente/galerie') %>
+
     <%- include('../fragmente/footer') %>
 </body>
 </html>

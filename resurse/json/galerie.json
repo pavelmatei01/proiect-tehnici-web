@@ -2,98 +2,98 @@
     "cale_galerie": "/resurse/imagini/galerie",
     "imagini": [
         {
-            "cale_fisier": "iarna1.webp",
+            "cale_fisier": "iarna1.jpg",
             "titlu": "Machetă cu locomotivă albastră în zăpadă",
             "text_descriere": "Dioramă cu locomotivă albastră cu aburi traversând pădurea înzăpezită",
             "anotimp": "iarna",
             "alt": "Machetă feroviară iarnă cu locomotivă albastră"
         },
         {
-            "cale_fisier": "iarna2.webp",
+            "cale_fisier": "iarna2.jpg",
             "titlu": "Locomotivă roșu-neagră în gară în zăpadă",
             "text_descriere": "Machetă cu locomotivă roșu-neagră pe șine de gară acoperită de zăpadă",
             "anotimp": "iarna",
             "alt": "Machetă locomotivă roșu-neagră pe șine în zăpadă"
         },
         {
-            "cale_fisier": "iarna3.webp",
+            "cale_fisier": "iarna3.jpg",
             "titlu": "Dioramă miniatură cu tren și decorații de Crăciun",
             "text_descriere": "Machetă festivă cu tren pe șine în zăpadă cu bradă și lumini de Crăciun",
             "anotimp": "iarna",
             "alt": "Machetă Crăciun cu tren și decorații sărbătorești"
         },
         {
-            "cale_fisier": "iarna4.webp",
+            "cale_fisier": "iarna4.jpg",
             "titlu": "Tren roșu pe munte înzăpezit",
             "text_descriere": "Tren de munte roșu care merge pe liniile ferate prin peisaj alp înzăpezit",
             "anotimp": "iarna",
             "alt": "Tren roșu pe cale ferată în munții înzăpez"
         },
         {
-            "cale_fisier": "iarna5.webp",
+            "cale_fisier": "iarna5.jpg",
             "titlu": "Tren în gară sub semnalul roșu în zăpadă",
             "text_descriere": "Tren care așteaptă în gară sub semafor roșu în peisaj complet înzăpezit",
             "anotimp": "iarna",
             "alt": "Tren în gară cu semnal roșu în zăpadă"
         },
         {
-            "cale_fisier": "primavara1.webp",
+            "cale_fisier": "primavara1.jpg",
             "titlu": "Tramvai în padure",
             "text_descriere": "Tramvai în pădure înverzită de primăvară",
             "anotimp": "primavara",
             "alt": "Tramvai în pădure primăvara"
         },
         {
-            "cale_fisier": "primavara2.webp",
+            "cale_fisier": "primavara2.jpg",
             "titlu": "Linie de tramvai în pădure primăvăratică",
             "text_descriere": "Linie de tramvai care traversează o pădure înverzită de primăvară",
             "anotimp": "primavara",
             "alt": "Linie de tramvai în pădure"
         },
         {
-            "cale_fisier": "primavara3.webp",
+            "cale_fisier": "primavara3.jpg",
             "titlu": "Tren japonez",
             "text_descriere": "Tren japonez in timpul sezonului de primăvară",
             "anotimp": "primavara",
             "alt": "Tren japonez primăvara"
         },
         {
-            "cale_fisier": "primavara4.webp",
+            "cale_fisier": "primavara4.jpg",
             "titlu": "Tren iugoslav de epocă",
             "text_descriere": "Tren iugoslav de epocă în peisaj de primăvară",
             "anotimp": "primavara",
             "alt": "Tren iugoslav de epocă"
         },
         {
-            "cale_fisier": "primavara5.webp",
+            "cale_fisier": "primavara5.jpg",
             "titlu": "Tren in Japonia sub magnolie",
             "text_descriere": "Tren japonez care trece pe lângă un copac înflorit de magnolie în primăvară",
             "anotimp": "primavara",
             "alt": "Tren în Japonia sub magnolie"
         },
         {
-            "cale_fisier": "vara1.webp",
+            "cale_fisier": "vara1.jpg",
             "titlu": "Tren roșu pe șine din perspectivă aeriană în peisaj verde",
             "text_descriere": "Tren roșu fotografiat din sus pe rețeaua de șine în peisaj verde și deschis de vară",
             "anotimp": "vara",
             "alt": "Tren roșu din perspectivă aeriană pe șine"
         },
         {
-            "cale_fisier": "vara2.webp",
+            "cale_fisier": "vara2.jpg",
             "titlu": "Locomotivă galbenă în machetă cu oameni și piatră",
             "text_descriere": "Dioramă cu locomotivă galbenă cu numărul 1514A cu oameni în jurul stației și pietră de construcție",
             "anotimp": "vara",
             "alt": "Machetă locomotive galbenă cu oameni"
         },
         {
-            "cale_fisier": "vara3.webp",
+            "cale_fisier": "vara3.jpg",
             "titlu": "Machetă cu tren în peisaj cu pietre și copaci verzi",
             "text_descriere": "Dioramă feroviară cu tren verde și roșu pe șine în peisaj construit cu pietre mari și copaci verzi",
             "anotimp": "vara",
             "alt": "Machetă tren verde și roșu în peisaj cu pietre"
         },
         {
-            "cale_fisier": "vara4.webp",
+            "cale_fisier": "vara4.jpg",
             "titlu": "Locomotivă cu aburi neagră-roșie în depou de vară",
             "text_descriere": "Locomotivă cu aburi cu carcasă neagră și vagon roșu stând în depou în peisaj deschis de vară",
             "anotimp": "vara",
@@ -105,42 +105,42 @@
             }
         },
         {
-            "cale_fisier": "vara5.webp",
+            "cale_fisier": "vara5.jpg",
             "titlu": "Machetă tren alb-albastru pe șine în peisaj cu pietre",
             "text_descriere": "Dioramă feroviară cu tren alb și albastru pe șine în peisaj construit cu pietre și copaci verzi",
             "anotimp": "vara",
             "alt": "Machetă tren alb-albastru în peisaj cu pietre"
         },
         {
-            "cale_fisier": "toamna1.webp",
+            "cale_fisier": "toamna1.jpg",
             "titlu": "Șine în pădure cu frunze roșii în lumina apusului",
             "text_descriere": "Linie ferată în pădure cu copaci în culori roșii și aurii iluminați de razele apusului de toamnă",
             "anotimp": "toamna",
             "alt": "Șine în pădure toamna cu frunze roșii"
         },
         {
-            "cale_fisier": "toamna2.webp",
+            "cale_fisier": "toamna2.jpg",
             "titlu": "Șine abandonate în peisaj desolat cu copaci desluți",
             "text_descriere": "Linie ferată abandonată în peisaj pustiu de toamnă târzie cu copaci goi și iarba seacă",
             "anotimp": "toamna",
             "alt": "Șine abandonate în peisaj desluț de toamnă"
         },
         {
-            "cale_fisier": "toamna3.webp",
+            "cale_fisier": "toamna3.jpg",
             "titlu": "Tren albastru-portocaliu pe cale ferată în peisaj verde",
             "text_descriere": "Tren modern cu cărucior albastru și portocaliu pe șine în peisaj verde deschis",
             "anotimp": "toamna",
             "alt": "Tren albastru-portocaliu pe cale ferată"
         },
         {
-            "cale_fisier": "toamna4.webp",
+            "cale_fisier": "toamna4.jpg",
             "titlu": "Locomotivă cu aburi roșie în pădure cu frunze de toamnă",
             "text_descriere": "Locomotivă cu aburi roșie cu vagon burgundy traversând pădure pline de frunze arșiță în tonuri de toamnă",
             "anotimp": "toamna",
             "alt": "Locomotivă roșie cu aburi în pădure toamna"
         },
         {
-            "cale_fisier": "toamna5.webp",
+            "cale_fisier": "toamna5.jpg",
             "titlu": "Tren multicolor pe cale ferată în munți verzi",
             "text_descriere": "Tren cu vagonului roșii și galbene pe șine în peisaj de munte cu copaci verzi și cer albastru",
             "anotimp": "toamna",

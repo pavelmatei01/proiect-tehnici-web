@@ -1,0 +1,165 @@
+#main-produs-unic {
+    width: 90%;
+    max-width: 1100px;
+    margin: 4rem auto;
+}
+
+.produs-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.produs-container .produs-galerie {
+    flex: 1 1 400px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.produs-container .produs-galerie img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    object-fit: contain;
+}
+
+.produs-container .produs-detalii {
+    flex: 1 1 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.produs-container .produs-detalii h1 {
+    font-size: 2.2rem;
+    margin: 0 0 0.5rem 0;
+    color: #1a1a1a;
+    line-height: 1.2;
+}
+
+.produs-container .produs-detalii .pret-mare {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #d32f2f;
+    margin: 0 0 1.5rem 0;
+}
+
+.produs-container .produs-detalii .descriere {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #4a4a4a;
+    margin-bottom: 2rem;
+}
+
+.produs-container .produs-detalii .lista-specificatii {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    border-top: 2px solid #f5f5f5;
+}
+
+.produs-container .produs-detalii .lista-specificatii li {
+    padding: 1rem 0;
+    border-bottom: 1px solid #f5f5f5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.produs-container .produs-detalii .lista-specificatii li .eticheta {
+    font-weight: 600;
+    color: #555;
+}
+
+.produs-container .produs-detalii .lista-specificatii li .valoare {
+    color: #222;
+    text-align: right;
+}
+
+.produs-container .produs-detalii .data-adaugare {
+    font-size: 0.9rem;
+    color: #888;
+    text-align: right;
+    margin-bottom: 2.5rem;
+}
+
+.produs-container .produs-detalii .grup-butoane {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: auto;
+}
+
+.produs-container .produs-detalii .grup-butoane .btn-adauga-cos {
+    flex: 2;
+    padding: 1rem;
+    font-size: 1.1rem;
+    background-color: #2a9d8f;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.produs-container .produs-detalii .grup-butoane .btn-adauga-cos i {
+    margin-right: 8px;
+}
+
+.produs-container .produs-detalii .grup-butoane .btn-adauga-cos:hover {
+    background-color: #21867a;
+}
+
+.produs-container .produs-detalii .grup-butoane .btn-adauga-cos:active {
+    transform: scale(0.98);
+}
+
+.produs-container .produs-detalii .grup-butoane .btn-inapoi {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: #ffffff;
+    color: #444;
+    text-decoration: none;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.produs-container .produs-detalii .grup-butoane .btn-inapoi:hover {
+    border-color: #1E3A8A;
+    color: #1E3A8A;
+    background-color: #f8faff;
+}
+
+/* Reguli pentru dispozitive mobile (adaptabilitate) */
+@media screen and (max-width: 600px) {
+    .produs-container {
+        padding: 1.5rem;
+        gap: 2rem;
+    }
+
+    .produs-container .produs-detalii .lista-specificatii li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .produs-container .produs-detalii .lista-specificatii li .valoare {
+        text-align: left;
+    }
+
+    .produs-container .produs-detalii .grup-butoane {
+        flex-direction: column;
+    }
+}

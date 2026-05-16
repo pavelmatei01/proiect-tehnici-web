@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <%- include("../fragmente/head") %>
+    <link rel="stylesheet" href="/resurse/css/produse.css" type="text/css" />
+    <title>TrainMag - Produse</title>
+    <script type="text/javascript" src="/resurse/js/produse.js"></script>
+</head>
+<body>
+<%- include("../fragmente/header") %>
+
+<main>
+    <section class="filtre-container">
+        <div class="grid-filtre">
+            <label> Nume produs: <input type="text" id="inp-nume"></label>
+
+            <label> Scară (1:x, x > val): 
+                <input type="range" id="inp-scara" value="0" min="0" max="250" step="10">
+                <span id="infoRange">(0)</span>
+            </label>
+
+            <div class="grup-radio"> Sistem digital:
+                <label><input name="gr_digital" value="da" type="radio"/> Da</label>
+                <label><input name="gr_digital" value="nu" type="radio"/> Nu</label>
+                <label><input id="rad-digital-toate" checked name="gr_digital" value="toate" type="radio"/> Toate</label>
+            </div>
+
+            <label> Descriere: <textarea id="inp-descriere" rows="2"></textarea></label>
+
+            <div class="grup-checkbox"> Subcategorii:
+                <label><input type="checkbox" class="inp-subcateg" value="locomotive" checked> Locomotive</label>
+                <label><input type="checkbox" class="inp-subcateg" value="vagoane" checked> Vagoane</label>
+                <label><input type="checkbox" class="inp-subcateg" value="altele" checked> Altele</label>
+            </div>
+
+            <label> Categorie:
+                <select id="inp-categorie">
+                    <option value="toate" selected>Orice categorie</option>
+                    <% if (locals.optiuniMeniu) { %>
+                        <% for (let opt of locals.optiuniMeniu) { %>
+                            <option value="<%- opt %>"><%- opt %></option>
+                        <% } %>
+                    <% } %>
+                </select>
+            </label>
+        </div>
+
+        <div class="actiuni">
+            <button id="filtrare">Filtrează</button> 
+            <button id="resetare">Resetează</button>
+            <button id="sortCrescNume">Sort. Cresc.</button>
+            <button id="sortDescrescNume">Sort. Descresc.</button>
+        </div>
+        <p>Alt+C pentru suma prețurilor.</p>
+    </section>
+
+    <section id="produse">
+        <div class="grid-produse">
+            <% for( let prod of locals.produse) { %>
+                <article id="elem_<%- prod.id %>" class="produs">
+                    <h3 class="nume">Machetă: <a href="/produs/<%- prod.id %>"><span class="val-nume"><%- prod.nume %></span></a></h3>
+                    <div class="info-prod-layout">
+                        <div class="tabel-container">
+                            <table>
+                                <tr><td>Preț</td><td><span class="val-pret"><%- prod.pret %></span> Lei</td></tr>
+                                <tr><td>Scară</td><td>1:<span class="val-scara"><%- prod.scara_numitor %></span></td></tr>
+                                <tr><td>Eră</td><td class="val-era"><%- prod.era %></td></tr>
+                                <tr><td>Digital</td><td class="val-digital"><%- prod.este_digital ? 'da' : 'nu' %></td></tr>
+                            </table>
+                        </div>
+                        <figure class="imagine-container">
+                            <img src="/resurse/imagini/produse/<%- prod.imagine %>" alt="<%- prod.nume %>">
+                        </figure>
+                    </div>
+                    <p class="desc-box">Descriere: <span class="val-descriere"><%- prod.descriere %></span></p>
+                    <span class="val-categorie d-none"><%- prod.categorie %></span>
+                    <span class="val-subcategorie d-none"><%- prod.subcategorie %></span>
+                </article>
+            <% } %>
+        </div>
+    </section>
+</main>
+
+<%- include("../fragmente/footer") %>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <%- include('../fragmente/head') %>
+    <link rel="stylesheet" href="/resurse/css/produs.css">
+    <title>TrainMag - <%- produs.nume %></title>
+</head>
+<body>
+    <%- include('../fragmente/header') %>
+
+    <main id="main-produs-unic">
+        <div class="produs-container">
+            <div class="produs-galerie">
+                <img src="/resurse/imagini/produse/<%- produs.imagine %>" alt="<%- produs.nume %>">
+            </div>
+            
+            <div class="produs-detalii">
+                <h1><%- produs.nume %></h1>
+                <p class="pret-mare"><%- produs.pret %> Lei</p>
+                <p class="descriere"><%- produs.descriere %></p>
+                
+                <ul class="lista-specificatii">
+                    <li><span class="eticheta">Categorie:</span> <span class="valoare"><%- produs.categorie %></span></li>
+                    <li><span class="eticheta">Subcategorie:</span> <span class="valoare"><%- produs.subcategorie %></span></li>
+                    <li><span class="eticheta">Scară (1:x):</span> <span class="valoare">1:<%- produs.scara_numitor %></span></li>
+                    <li><span class="eticheta">Era feroviară:</span> <span class="valoare"><%- produs.era %></span></li>
+                    <li><span class="eticheta">Sistem:</span> <span class="valoare"><%- produs.este_digital ? 'Digital' : 'Analogic / Nu se aplică' %></span></li>
+                    <li><span class="eticheta">Materiale folosite:</span> <span class="valoare"><%- produs.materiale ? produs.materiale.join(', ') : 'Nespecificat' %></span></li>
+                </ul>
+                
+                <p class="data-adaugare">Adăugat în ofertă la: <time datetime="<%- produs.data_adaugare %>"><%- new Date(produs.data_adaugare).toLocaleDateString('ro-RO') %></time></p>
+
+                <div class="grup-butoane">
+                    <button class="btn-adauga-cos"><i class="fa-solid fa-cart-plus"></i> Adaugă în coș</button>
+                    <a href="/produse" class="btn-inapoi">Înapoi la produse</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('../fragmente/footer') %>
+</body>
+</html>

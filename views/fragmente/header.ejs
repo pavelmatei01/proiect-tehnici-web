@@ -1,35 +1,64 @@
+<!-- Scriptul blocant care aplica tema inainte de a se randa restul paginii (previne flash-ul alb) -->
+<script src="/resurse/js/tema.js"></script>
+
 <header>
-    <h1>
-      <i class="fa-solid fa-gear"></i>
-      TrainMag
-    </h1>
-    <img src="/resurse/imagini/logo/logotrainmag.png" alt="Sigla magazinului TrainMag" width="200">
-    <nav>
-      <input type="checkbox" id="burger-toggle">
-      <label for="burger-toggle" class="burger-icon">
-      <i class="fa-solid fa-bars"></i>
-  </label>
-      <ul id="meniu-principal">
-        <li>
-          <a href="#acasa" title="Acasă"><i class="fa-solid fa-home"></i><span>Acasă</span></a>
-            <ul class="submeniu">
-              <li><a href="/despre" title="Despre Noi">Despre Noi</a></li>
-              <li><a href="#promotii" title="Oferte Speciale">Oferte Speciale</a></li>
-              <li><a href="#orar" title="Evenimente">Evenimente</a></li>
-              <li><a href="#specificatii" title="Specificații Tehnice">Specificații Tehnice</a></li>
-              <li><a href="#index-intrebari" title="Întrebări Frecvente (FAQ)">Întrebări Frecvente (FAQ)</a></li>
-              </ul>
-        </li>
-        <li><a href="produse.html" title="Catalog Produse"><i class="fa-solid fa-box-open"></i> Catalog Produse</a>
-          <ul class="submeniu">
-            <li><a href="produse.html#trenuri" title="Trenuri și Locomotive">Trenuri și Locomotive</a></li>
-            <li><a href="produse.html#vagoane" title="Vagoane">Vagoane</a></li>
-            <li><a href="produse.html#autobuze" title="Autobuze și Transport în Comun">Autobuze și Transport în Comun</a></li>
-            <li><a href="produse.html#accesorii" title="Accesorii pentru Diorame">Accesorii pentru Diorame</a></li>
-          </ul>
-        
-        </li>
-        <li><a href="contact.html" title="Contact și Locație"><i class="fa-solid fa-address-card"></i> Contact și Locație</a></li>
-      </ul>
-    </nav>
-  </header>
+  <h1>
+    <a href="/#acasa" style="color: inherit; text-decoration: none;">
+        <i class="fa-solid fa-gear"></i>
+        TrainMag
+    </a>
+  </h1>
+  
+  <a href="/#acasa">
+      <img src="/resurse/imagini/logo/logotrainmag.png" alt="Sigla magazinului TrainMag" width="200">
+  </a>
+
+  <nav>
+    <input type="checkbox" id="burger-toggle">
+    <label for="burger-toggle" class="burger-icon">
+        <i class="fa-solid fa-bars"></i>
+    </label>
+    
+    <ul id="meniu-principal">
+      <li>
+        <a href="/#acasa" title="Acasă"><i class="fa-solid fa-home"></i><span>Acasă</span></a>
+        <ul class="submeniu">
+          <li><a href="/#welcome" title="Despre Noi">Despre Noi</a></li>
+          <li><a href="/#promotii" title="Oferte Speciale">Oferte Speciale</a></li>
+          <li><a href="/#orar" title="Evenimente">Evenimente</a></li>
+          <li><a href="/#specificatii" title="Specificații Tehnice">Specificații Tehnice</a></li>
+          <li><a href="/#index-intrebari" title="Întrebări Frecvente (FAQ)">Întrebări Frecvente (FAQ)</a></li>
+        </ul>
+      </li>
+      
+      <li>
+        <a href="/produse" title="Catalog Produse"><i class="fa-solid fa-box-open"></i> Produse</a>
+        <ul class="submeniu">
+            <li><a href="/produse" title="Toate produsele">Toate</a></li>
+            
+            <!-- Generarea dinamică a subcategoriilor din baza de date -->
+            <% if (locals.optiuniMeniu) { %>
+                <% for (let opt of locals.optiuniMeniu) { %>
+                    <li>
+                        <a href="/produse?categorie=<%- opt %>" title="Categoria <%- opt %>">
+                            <%- opt.charAt(0).toUpperCase() + opt.slice(1).replace(/_/g, ' ') %>
+                        </a>
+                    </li>
+                <% } %>
+            <% } %>
+        </ul>
+      </li>
+      
+      <li>
+        <a href="/contact.html" title="Contact și Locație"><i class="fa-solid fa-address-card"></i> Contact și Locație</a>
+      </li>
+
+      <!-- Butonul pentru schimbarea temei Light/Dark -->
+      <li>
+          <button id="schimba_tema" title="Schimbă tema (Light/Dark)" style="background: transparent; border: none; color: inherit; font-size: 1.4rem; cursor: pointer; padding: 0.5rem;">
+              <i id="icon_tema" class="fa-solid fa-sun"></i>
+          </button>
+      </li>
+    </ul>
+  </nav>
+</header>

@@ -1,27 +1,159 @@
-:root { --cl-primara:#1E3A8A; --cl-secundara:#F59E0B; --cl-marcare:#f1f5f9; --cl-border:#cbd5e1; }
-main { --padd-main:1rem; padding:0 var(--padd-main); max-width:1200px; margin:0 auto; }
-.filtre-container,.grid-produse .produs { background:var(--cl-marcare); border:1px solid var(--cl-border); }
-.filtre-container { padding:1rem; border-radius:1rem; margin-bottom:2rem; }
-.grid-produse { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
-.grid-produse .produs { border-radius:1.5rem; box-shadow:0 0 .8rem .2rem rgba(0,0,0,.2); overflow:hidden; position:relative; background:#fff; padding-bottom:4rem; }
-.grid-produse .produs h3 { background:var(--cl-primara); color:#fff; text-align:center; margin:0; padding:.8rem 0; font-size:1.1rem; }
-.grid-produse .produs h3 a { color:var(--cl-secundara)!important; text-decoration:none; transition:color .2s ease; }
-.grid-produse .produs h3 a:hover { color:#93c5fd; }
-.info-prod-layout { display:flex; align-items:center; background:var(--cl-marcare); padding:.5rem; border:1px solid var(--cl-border); border-width:1px 0; }
-.tabel-container { width:60%; }
-.tabel-container table { width:100%; border-collapse:collapse; }
-.tabel-container td { border:1px solid var(--cl-border); padding:.3rem .5rem; font-size:.85rem; }
-.tabel-container td:first-child { font-weight:700; background:rgba(255,255,255,.7); }
-.imagine-container { width:40%; text-align:center; margin:0; }
-.imagine-container img { border:1px solid grey; border-radius:.5rem; max-width:90%; height:auto; max-height:140px; object-fit:contain; background:#fff; }
-.grid-produse .produs p.descriere { padding:.5rem 1rem; text-align:justify; font-size:.95rem; }
-.grid-produse .produs p.categorie { text-align:center; font-weight:700; color:var(--cl-primara); margin:.5rem 0; }
-.selecteaza-cos { display:inline-block; background:var(--cl-secundara); position:absolute; bottom:.8rem; right:1rem; border-radius:.5rem; text-align:center; padding:.4rem .8rem; border:1px solid transparent; cursor:pointer; font-size:.9rem; font-weight:700; transition:all .2s ease; }
-.selecteaza-cos:hover { background:var(--cl-marcare); border-color:var(--cl-secundara); color:var(--cl-primara); }
-.selectat { color:green; background:yellow; font-weight:700; }
+:root {
+    /* Cromatica adaptată pentru TrainMag */
+    --cl-primara: #1E3A8A;     /* Albastru închis */
+    --cl-secundara: #F59E0B;   /* Galben / Portocaliu */
+    --cl-marcare: #f1f5f9;     /* Gri-albastru foarte deschis */
+    --cl-border: #cbd5e1;      /* Gri pentru borduri */
+}
+
+main {
+    --padd-main: 1rem;
+    padding-left: var(--padd-main);
+    padding-right: var(--padd-main);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Stilizare sumară pentru zona de filtre */
+.filtre-container {
+    background-color: var(--cl-marcare);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    border: 1px solid var(--cl-border);
+}
+
+.grid-produse {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1.5rem;
+}
+
+.grid-produse .produs {
+    border-radius: 1.5rem;
+    box-shadow: 0px 0px 0.8rem 0.2rem rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    background-color: white;
+    padding-bottom: 4rem; /* Spațiu lăsat liber la bază pentru butonul de coș */
+}
+
+/* Antetul produsului */
+/* Antetul produsului (Fundal albastru închis, text static alb) */
+.grid-produse .produs h3 {
+    background-color: var(--cl-primara); /* Albastru închis */
+    color: #ffffff;                      /* Cuvântul "Nume:" cu alb */
+    text-align: center;
+    margin-top: 0;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+/* Numele produsului care este link (Galben) */
+.grid-produse .produs h3 a {
+    color: var(--cl-secundara)!important;          /* Numele locomotivei cu galben */
+    text-decoration: none;
+    transition: color 0.2s ease;         /* Tranziție fină la hover */
+}
+
+/* Culoarea link-ului la trecerea cu mouse-ul (Albastru deschis) */
+.grid-produse .produs h3 a:hover {
+    color: #93c5fd;                      /* Albastru deschis la hover */
+}
+
+/* Layout Flex pentru Tabel (stânga) și Imagine (dreapta) */
+.info-prod-layout {
+    display: flex;
+    align-items: center;
+    background-color: var(--cl-marcare);
+    padding: 0.5rem;
+    border-top: 1px solid var(--cl-border);
+    border-bottom: 1px solid var(--cl-border);
+}
+
+.tabel-container {
+    width: 60%;
+}
+
+.tabel-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabel-container td {
+    border: 1px solid var(--cl-border);
+    padding: 0.3rem 0.5rem;
+    font-size: 0.85rem;
+}
+
+.tabel-container td:first-child {
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.imagine-container {
+    width: 40%;
+    text-align: center;
+    margin: 0;
+}
+
+.imagine-container img {
+    border: 1px solid grey;
+    border-radius: 0.5rem;
+    max-width: 90%;
+    height: auto;
+    max-height: 140px;
+    object-fit: contain;
+    background-color: white;
+}
+
+/* Textul din interiorul produsului */
+.grid-produse .produs p.descriere {
+    padding: 0.5rem 1rem;
+    text-align: justify;
+    font-size: 0.95rem;
+}
+
+.grid-produse .produs p.categorie {
+    text-align: center;
+    font-weight: bold;
+    color: var(--cl-primara);
+    margin: 0.5rem 0;
+}
+
+/* Butonul Selectează absolut poziționat */
+.selecteaza-cos {
+    display: inline-block;
+    background-color: var(--cl-secundara);
+    position: absolute;
+    bottom: 0.8rem;
+    right: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.selecteaza-cos:hover {
+    background-color: var(--cl-marcare);
+    border: 1px solid var(--cl-secundara);
+    color: var(--cl-primara);
+}
+
+.selectat {
+    color: green;
+    background-color: yellow;
+    font-weight: bold;
+}
+
 body.dark .filtre-container,
-body.dark .grid-produse .produs { background:#111827; color:#f8fafc; border-color:#334155; }
-body.dark .info-prod-layout { background:#111827; color:#f8fafc; border-color:#334155; border-width:1px 0; }
+body.dark .grid-produse .produs,
+body.dark .info-prod-layout { background:#111827; color:#f8fafc; border-color:#334155; }
 body.dark .filtre-container input,
 body.dark .filtre-container select,
 body.dark .filtre-container textarea,
@@ -33,13 +165,68 @@ body.dark .filtre-container select,
 body.dark .filtre-container textarea,
 body.dark .imagine-container img { background:#0f172a; border-color:#334155; }
 body.dark .grid-produse .produs h3 { background:#1e3a8a; color:#fff; }
-body.dark .grid-produse .produs h3 a { color:#fde68a!important; }
+body.dark .grid-produse .produs h3 a { color:#fde68a !important; }
 body.dark .grid-produse .produs p.categorie { color:#93c5fd; }
 body.dark .tabel-container td:first-child { background:#1e293b; }
 body.dark .selecteaza-cos { background:#f59e0b; color:#111827; }
 body.dark .selecteaza-cos:hover { background:#fde68a; border-color:#f59e0b; }
 body.dark .selectat { color:#bbf7d0; background:#14532d; }
-.grid-filtre .grup-radio,.grid-filtre .grup-checkbox { display:flex; flex-direction:column; font-weight:600; font-size:.95rem; }
-.grid-filtre .grup-radio label,.grid-filtre .grup-checkbox label { display:inline-flex; align-items:center; font-weight:400; gap:.4rem; cursor:pointer; margin-top:.3rem; }
-.grid-filtre label div { display:flex; align-items:center; gap:.5rem; margin-top:.4rem; }
-@media screen and (max-width:850px) { .grid-produse { grid-template-columns:1fr; } .info-prod-layout { flex-direction:column; } .tabel-container,.imagine-container { width:100%; margin-bottom:.5rem; } }
+
+.grid-filtre .grup-radio,
+.grid-filtre .grup-checkbox {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.grid-filtre .grup-radio label,
+.grid-filtre .grup-checkbox label {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: normal;
+    gap: 0.4rem;
+    cursor: pointer;
+    margin-top: 0.3rem;
+}
+
+/* Pentru ca slidere-ul range sa arate bine inline cu capetele */
+.grid-filtre label div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+}
+
+/* Div-ul flotant care afișează suma calculată */
+.info-suma {
+    position: fixed;         /* rămâne pe ecran indiferent de scroll */
+    bottom: 2rem;            /* distanță față de marginea de jos */
+    right: 2rem;             /* distanță față de marginea din dreapta */
+    z-index: 9999;           /* apare deasupra oricărui alt element */
+    padding: 1rem 1.5rem;    /* spațiu interior */
+    border-radius: 0.75rem;  /* colțuri rotunjite */
+    background: #000000;     /* fundal negru */
+    color: var(--cl-secundara); /* text în culoarea de highlight (galben) */
+    font-weight: bold;       /* text îngroșat */
+    font-size: 1.1rem;       /* mărime ușor mai mare */
+    text-align: center;      /* centrare text */
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4); /* umbră pentru profunzime */
+}
+
+/* Trecerea pe o singură coloană pentru ecrane mici */
+@media screen and (max-width: 850px) {
+    .grid-produse {
+        grid-template-columns: 1fr;
+    }
+    
+    .info-prod-layout {
+        flex-direction: column;
+    }
+    
+    .tabel-container, .imagine-container {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+}

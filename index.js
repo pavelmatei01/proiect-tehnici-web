@@ -30,7 +30,7 @@ for (let folder of vect_foldere){
 const client = new pg.Client({
     host: "localhost",
     user: "pavel",
-    password: "pavel",
+    password: "Uzului16#",
     database: "trainmag",
     port: 5432
 });

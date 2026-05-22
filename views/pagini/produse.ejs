@@ -10,54 +10,151 @@
 <%- include("../fragmente/header") %>
 
 <main>
-    <section class="filtre-container">
-        <div class="grid-filtre">
-            <label> Nume produs: <input type="text" id="inp-nume"></label>
-
-            <label> Scară (1:x, x > val): 
-                <input type="range" id="inp-scara" value="0" min="0" max="250" step="10">
-                <span id="infoRange">(0)</span>
-            </label>
-
-            <div class="grup-radio"> Sistem digital:
-                <label><input name="gr_digital" value="da" type="radio"/> Da</label>
-                <label><input name="gr_digital" value="nu" type="radio"/> Nu</label>
-                <label><input id="rad-digital-toate" checked name="gr_digital" value="toate" type="radio"/> Toate</label>
+    <section class="filtre-container container mt-4 shadow-sm">
+        <div class="row g-3">
+            <!-- Nume Produs -->
+            <div class="col-md-6 col-lg-4">
+                <label for="inp-nume" class="form-label fw-bold">Nume produs:</label>
+                <input type="text" id="inp-nume" class="form-control" placeholder="Ex: Locomotivă">
             </div>
 
-            <label> Descriere: <textarea id="inp-descriere" rows="2"></textarea></label>
-
-            <div class="grup-checkbox"> Subcategorii:
-                <label><input type="checkbox" class="inp-subcateg" value="locomotive" checked> Locomotive</label>
-                <label><input type="checkbox" class="inp-subcateg" value="vagoane" checked> Vagoane</label>
-                <label><input type="checkbox" class="inp-subcateg" value="altele" checked> Altele</label>
+            <!-- Range Scara -->
+            <div class="col-md-6 col-lg-4">
+                <label for="inp-scara" class="form-label fw-bold">Scară (1:x, x &gt; val):</label>
+                <div class="d-flex align-items-center gap-2">
+                    <span class="text-muted small">0</span>
+                    <input type="range" id="inp-scara" class="form-range flex-grow-1" value="0" min="0" max="250" step="10">
+                    <span class="text-muted small">250 <span id="infoRange" class="badge text-bg-secondary">(0)</span></span>
+                </div>
             </div>
 
-            <label> Categorie:
-                <select id="inp-categorie">
+            <!-- Radio ca Toggle Buttons - Sistem Digital -->
+            <div class="col-md-6 col-lg-4">
+                <label class="form-label d-block fw-bold">Sistem digital:</label>
+                <div class="btn-group w-100" role="group" aria-label="Filtru sistem digital">
+                    <input type="radio" class="btn-check" name="gr_digital" id="rad-da" value="da" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="rad-da">Da</label>
+
+                    <input type="radio" class="btn-check" name="gr_digital" id="rad-nu" value="nu" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="rad-nu">Nu</label>
+
+                    <input type="radio" class="btn-check" name="gr_digital" id="rad-toate" value="toate" autocomplete="off" checked>
+                    <label class="btn btn-outline-primary" for="rad-toate">Toate</label>
+                </div>
+            </div>
+
+            <!-- Floating Label pentru Textarea -->
+            <div class="col-md-6 col-lg-4">
+                <div class="form-floating h-100">
+                    <textarea class="form-control" id="inp-descriere" placeholder="Introduceți o descriere" style="height: 100px; resize: none;"></textarea>
+                    <label for="inp-descriere">Descriere (minim 3 caractere)</label>
+                    <div class="invalid-feedback">
+                        Descrierea este prea scurtă (minim 3 caractere).
+                    </div>
+                </div>
+            </div>
+
+            <!-- Checkboxes clasice - Subcategorii -->
+            <div class="col-md-6 col-lg-4">
+                <label class="form-label d-block fw-bold">Subcategorii:</label>
+                <div class="form-check form-check-inline mt-2">
+                    <input class="form-check-input inp-subcateg" type="checkbox" id="chk-loco" value="locomotive" checked>
+                    <label class="form-check-label" for="chk-loco">Locomotive</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input inp-subcateg" type="checkbox" id="chk-vag" value="vagoane" checked>
+                    <label class="form-check-label" for="chk-vag">Vagoane</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input inp-subcateg" type="checkbox" id="chk-alt" value="altele" checked>
+                    <label class="form-check-label" for="chk-alt">Altele</label>
+                </div>
+            </div>
+
+            <!-- Select - Categorie -->
+            <div class="col-md-6 col-lg-4">
+                <label for="inp-categorie" class="form-label fw-bold">Categorie:</label>
+                <select id="inp-categorie" class="form-select">
                     <option value="toate" selected>Orice categorie</option>
                     <% if (locals.optiuniMeniu) { %>
                         <% for (let opt of locals.optiuniMeniu) { %>
-                            <option value="<%- opt %>"><%- opt %></option>
+                            <option value="<%- opt %>"><%- opt.charAt(0).toUpperCase() + opt.slice(1).replace(/_/g, ' ') %></option>
                         <% } %>
                     <% } %>
                 </select>
-            </label>
+            </div>
+
+            <!-- Datalist - Eră feroviară -->
+            <%
+            let _eraSet = new Set(locals.produse.map(p => p.era).filter(Boolean));
+            let _eraList = [..._eraSet].sort();
+            %>
+            <div class="col-md-6 col-lg-4">
+                <label for="inp-era" class="form-label fw-bold">Eră feroviară:</label>
+                <input type="text" id="inp-era" class="form-control" list="era-options" placeholder="Ex: IV">
+                <datalist id="era-options">
+                    <% for (let _era of _eraList) { %>
+                        <option value="<%- _era %>">
+                    <% } %>
+                </datalist>
+            </div>
+
+            <!-- Select multiplu - Materiale -->
+            <%
+            let _matSet = new Set();
+            for (let _p of locals.produse) {
+                if (_p.materiale) {
+                    let _mats = Array.isArray(_p.materiale) ? _p.materiale : String(_p.materiale).split(',');
+                    for (let _m of _mats) _matSet.add(_m.trim());
+                }
+            }
+            let _matList = [..._matSet].sort();
+            %>
+            <div class="col-md-6 col-lg-4">
+                <label for="inp-materiale" class="form-label fw-bold">Materiale:</label>
+                <select id="inp-materiale" class="form-select" multiple size="4">
+                    <% for (let _mat of _matList) { %>
+                        <option value="<%- _mat %>"><%- _mat %></option>
+                    <% } %>
+                </select>
+                <small class="text-muted">Ctrl+click pentru selecție multiplă. Fără selecție = oricare.</small>
+            </div>
         </div>
 
-        <div class="actiuni">
-            <button id="filtrare">Filtrează</button> 
-            <button id="resetare">Resetează</button>
-            <button id="sortCrescNume">Sort. Cresc.</button>
-            <button id="sortDescrescNume">Sort. Descresc.</button>
+        <!-- Butoane Acțiuni Bootstrap -->
+        <hr class="my-4">
+        <div class="actiuni d-flex flex-wrap gap-2 justify-content-center justify-content-md-start">
+            <button id="filtrare" class="btn btn-primary flex-grow-1 flex-sm-grow-0 py-2">
+                <i class="bi bi-funnel-fill fs-5 align-middle"></i> 
+                <span class="d-none d-sm-inline ms-1 align-middle">Filtrează</span>
+            </button> 
+            <button id="resetare" class="btn btn-danger flex-grow-1 flex-sm-grow-0 py-2">
+                <i class="bi bi-arrow-counterclockwise fs-5 align-middle"></i> 
+                <span class="d-none d-sm-inline ms-1 align-middle">Resetează</span>
+            </button>
+            <button id="sortCrescNume" class="btn btn-secondary flex-grow-1 flex-sm-grow-0 py-2">
+                <i class="bi bi-sort-alpha-down fs-5 align-middle"></i> 
+                <span class="d-none d-sm-inline ms-1 align-middle">Crescator (Raport/Subcateg)</span>
+            </button>
+            <button id="sortDescrescNume" class="btn btn-secondary flex-grow-1 flex-sm-grow-0 py-2">
+                <i class="bi bi-sort-alpha-up fs-5 align-middle"></i>
+                <span class="d-none d-sm-inline ms-1 align-middle">Descrescator</span>
+            </button>
+            <button id="calculare" class="btn btn-success flex-grow-1 flex-sm-grow-0 py-2">
+                <i class="bi bi-calculator fs-5 align-middle"></i>
+                <span class="d-none d-sm-inline ms-1 align-middle">Calculează suma</span>
+            </button>
         </div>
-        <p>Alt+C pentru suma prețurilor.</p>
     </section>
 
     <section id="produse">
         <div class="grid-produse">
+            <%
+            const _luni = ['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'];
+            const _zile = ['Duminică','Luni','Marți','Miercuri','Joi','Vineri','Sâmbătă'];
+            %>
             <% for( let prod of locals.produse) { %>
-                <article id="elem_<%- prod.id %>" class="produs">
+                <article id="elem_<%- prod.id %>" class="produs <%- prod.categorie %>">
                     <h3 class="nume">Machetă: <a href="/produs/<%- prod.id %>"><span class="val-nume"><%- prod.nume %></span></a></h3>
                     <div class="info-prod-layout">
                         <div class="tabel-container">
@@ -66,6 +163,9 @@
                                 <tr><td>Scară</td><td>1:<span class="val-scara"><%- prod.scara_numitor %></span></td></tr>
                                 <tr><td>Eră</td><td class="val-era"><%- prod.era %></td></tr>
                                 <tr><td>Digital</td><td class="val-digital"><%- prod.este_digital ? 'da' : 'nu' %></td></tr>
+                                <tr><td>Materiale</td><td class="val-materiale"><%- prod.materiale ? (Array.isArray(prod.materiale) ? prod.materiale.join(', ') : prod.materiale) : 'Nespecificat' %></td></tr>
+                                <% let _d = new Date(prod.data_adaugare); let _dataFmt = _d.getDate() + ' ' + _luni[_d.getMonth()] + ' ' + _d.getFullYear() + ' (' + _zile[_d.getDay()] + ')'; %>
+                                <tr><td>Adăugat</td><td><time datetime="<%- prod.data_adaugare %>"><%- _dataFmt %></time></td></tr>
                             </table>
                         </div>
                         <figure class="imagine-container">
@@ -73,7 +173,7 @@
                         </figure>
                     </div>
                     <p class="desc-box">Descriere: <span class="val-descriere"><%- prod.descriere %></span></p>
-                    <span class="val-categorie d-none"><%- prod.categorie %></span>
+                    <p class="categorie">Categorie: <span class="val-categorie"><%- prod.categorie %></span></p>
                     <span class="val-subcategorie d-none"><%- prod.subcategorie %></span>
                 </article>
             <% } %>

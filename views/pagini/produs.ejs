@@ -28,7 +28,13 @@
                     <li><span class="eticheta">Materiale folosite:</span> <span class="valoare"><%- produs.materiale ? produs.materiale.join(', ') : 'Nespecificat' %></span></li>
                 </ul>
                 
-                <p class="data-adaugare">Adăugat în ofertă la: <time datetime="<%- produs.data_adaugare %>"><%- new Date(produs.data_adaugare).toLocaleDateString('ro-RO') %></time></p>
+                <%
+                let _dp = new Date(produs.data_adaugare);
+                let _luniP = ['Ianuarie','Februarie','Martie','Aprilie','Mai','Iunie','Iulie','August','Septembrie','Octombrie','Noiembrie','Decembrie'];
+                let _zieleP = ['Duminică','Luni','Marți','Miercuri','Joi','Vineri','Sâmbătă'];
+                let _dataFmtP = _dp.getDate() + ' ' + _luniP[_dp.getMonth()] + ' ' + _dp.getFullYear() + ' (' + _zieleP[_dp.getDay()] + ')';
+                %>
+                <p class="data-adaugare">Adăugat în ofertă la: <time datetime="<%- produs.data_adaugare %>"><%- _dataFmtP %></time></p>
 
                 <div class="grup-butoane">
                     <button class="btn-adauga-cos"><i class="fa-solid fa-cart-plus"></i> Adaugă în coș</button>

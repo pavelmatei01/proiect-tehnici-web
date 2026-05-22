@@ -4,11 +4,7 @@ $primary: #1E3A8A;
 $secondary: #F59E0B;
 $btn-color: #ffffff;
 
-// --- CERINȚA: Variabile SASS pentru border ---
-$border-radius: 12px; 
-$btn-border-radius: $border-radius; // Folosim variabila generală
-$btn-border-width: 3px;             // Grosimea borderului cerută
-$input-border-width: 2px;
+
 
 $grid-breakpoints: (
   xs: 0,
@@ -18,14 +14,18 @@ $grid-breakpoints: (
   xl: 1200px,
   xxl: 1400px
 );
+$border-radius: 12px; 
+$input-border-radius: $border-radius;
+$btn-border-radius: $border-radius;
+
+$input-btn-border-width: 3px; // Controlează grosimea borderului pentru butoane și input-uri
+$border-width: 2px; // Grosime de fallback
+
+$form-range-thumb-width: 1.5rem;  // Bulina cu 50% mai mare
+$form-range-thumb-height: 1.5rem;
+$form-range-thumb-bg: $secondary; // Culoarea bulinei glisante (portocaliu/galben)
+$form-range-track-bg: #94a3b8;    // Culoarea fundalului barei pe care glisează
 
 $h1-font-size: 2.5rem;
 $h2-font-size: 2rem;
-$spacer: 1.25rem;
-$form-range-thumb-width: 1.5rem;
-$form-range-thumb-height: 1.5rem;
-$form-range-thumb-bg: $secondary; // Bulina va fi galbenul TrainMag
-$form-range-thumb-border-radius: 50%;
-$form-range-track-bg: #cbd5e1;    // Culoarea sliderului (gri-albastru)
-$form-range-thumb-focus-box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba($primary, 0.25);
 @import "../../node_modules/bootstrap/scss/bootstrap";

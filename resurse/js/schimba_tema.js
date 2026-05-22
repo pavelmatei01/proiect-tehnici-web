@@ -2,13 +2,13 @@ window.addEventListener("DOMContentLoaded", function() {
     let chkTema = document.getElementById("schimba_tema");
     let iconTema = document.getElementById("icon_tema");
 
-    // 1. Sincronizăm switch-ul cu tema salvată în localStorage
+    // Sincronizăm switch-ul cu starea salvată în localStorage
     if (document.body.classList.contains("dark")) {
         chkTema.checked = true;
         iconTema.classList.replace("fa-sun", "fa-moon");
     }
 
-    // 2. Schimbare la acționarea switch-ului
+    // Schimbare la acționarea switch-ului Bootstrap
     chkTema.onchange = function() {
         if (this.checked) {
             document.body.classList.add("dark");

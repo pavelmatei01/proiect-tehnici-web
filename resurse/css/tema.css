@@ -1,4 +1,3 @@
-/* 1. Definirea variabilelor */
 :root {
     --bg-pag: #F8FAFC;
     --text-pag: #212529;
@@ -7,68 +6,56 @@
 }
 
 body.dark {
-    --bg-pag: #0f172a; /* Albastru foarte închis */
-    --text-pag: #f1f5f9; /* Alb-gri */
-    --bg-header: #020617; /* Aproape negru */
-    --text-header: #93c5fd; /* Albastru deschis */
+    --bg-pag: #0f172a;
+    --text-pag: #f1f5f9;
+    --bg-header: #020617;
+    --text-header: #93c5fd;
 }
 
-/* 2. Aplicare Globală pe containere (Cea mai importantă parte) */
-/* Adăugăm !important pentru a suprascrie orice fundal alb din style.css sau produse.css */
 body, main, section, article, aside, .container, .card, .filtre-container, .produs {
     background-color: var(--bg-pag) !important;
     color: var(--text-pag) !important;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* 3. Header-ul rămâne cu culorile lui speciale */
 header, header *, #schimba_tema {
     background-color: var(--bg-header) !important;
     color: var(--text-header) !important;
 }
 
-/* 4. Ajustări mici pentru lizibilitate în Dark Mode */
 body.dark a { color: #60a5fa; }
 body.dark border, body.dark td, body.dark hr { border-color: #334155 !important; }
 
-/* Formularele să nu rămână albe pe fundal închis */
 body.dark input, body.dark select, body.dark textarea {
     background-color: #1e293b !important;
     color: white !important;
     border: 1px solid #334155;
 }
 
-/* 1. REPARARE GALERIE (Imaginea 1) */
-/* Forțăm fundalul închis pe benzile de sub poze unde textul era invizibil */
-body.dark figcaption, 
-body.dark .produs h3, 
+body.dark figcaption,
+body.dark .produs h3,
 body.dark [class*="galerie"] div {
-    background-color: #1e293b !important; /* Un gri-albastru închis */
+    background-color: #1e293b !important;
     color: var(--text-header) !important;
 }
 
-/* 2. REPARARE TABEL (Imaginea 2) */
-/* Forțăm toate celulele tabelului să preia fundalul închis al paginii */
-body.dark td, 
+body.dark td,
 body.dark th {
     background-color: var(--bg-pag) !important;
     color: var(--text-pag) !important;
-    border: 1px solid #334155 !important; /* Borduri mai șterse pentru dark mode */
+    border: 1px solid #334155 !important;
 }
 
-/* 3. REPARARE WATERMARK / TEXTE SPECIALE */
-/* Textul TrainMag din fundal sau titlurile care au rămas albe pe alb */
-body.dark .watermark, 
+body.dark .watermark,
 body.dark hgroup p {
-    color: rgba(255, 255, 255, 0.1) !important; /* Watermark discret */
+    color: rgba(255, 255, 255, 0.1) !important;
 }
 
-body.dark section h2, 
+body.dark section h2,
 body.dark section h3 {
     color: var(--text-header) !important;
 }
 
-/* Dacă ai rânduri de tabel care rămâneau albe (zebra stripes) */
 body.dark tr {
     background-color: transparent !important;
 }

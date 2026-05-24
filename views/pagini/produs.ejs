@@ -3,6 +3,7 @@
 <head>
     <%- include('../fragmente/head') %>
     <link rel="stylesheet" href="/resurse/css/produs.css">
+    <link rel="stylesheet" href="/resurse/css/seturi.css">
     <title>TrainMag - <%- produs.nume %></title>
 </head>
 <body>
@@ -40,6 +41,31 @@
                     <button class="btn-adauga-cos"><i class="fa-solid fa-cart-plus"></i> Adaugă în coș</button>
                     <a href="/produse" class="btn-inapoi">Înapoi la produse</a>
                 </div>
+
+                <% if (seturi && seturi.length > 0) { %>
+                <section id="sectiune-seturi-produs">
+                    <h2><i class="fa-solid fa-layer-group"></i> Seturi care includ acest produs</h2>
+                    <div class="seturi-produs-grid">
+                        <% for (let set of seturi) { %>
+                        <div class="card-set-mic">
+                            <div class="card-set-mic-header">
+                                <h3><%- set.nume_set %></h3>
+                                <span class="badge-reducere">-<%- set.reducere_procent %>%</span>
+                                <span class="pret-set-mic"><%- set.pret_set.toFixed(2) %> Lei</span>
+                            </div>
+                            <div class="card-set-mic-body">
+                                <% for (let p of set.produse) { %>
+                                <a href="/produs/<%- p.id %>" class="produs-set-chip" title="<%- p.nume %>">
+                                    <img src="/resurse/imagini/produse/<%- p.imagine %>" alt="<%- p.nume %>">
+                                    <span><%- p.nume %></span>
+                                </a>
+                                <% } %>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                </section>
+                <% } %>
             </div>
         </div>
     </main>

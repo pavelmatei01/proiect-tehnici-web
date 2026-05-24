@@ -124,23 +124,106 @@ app.get("/produse", function(req, res){
 
 
 
+app.get("/seturi", function(req, res){
+    let querySetur = `
+        SELECT s.id AS set_id, s.nume_set, s.descriere_set,
+               p.id AS produs_id, p.nume, p.pret, p.imagine
+        FROM seturi s
+        JOIN asociere_set a ON s.id = a.id_set
+        JOIN produse p ON p.id = a.id_produs
+        ORDER BY s.id, p.id
+    `;
+    client.query(querySetur, function(err, rez){
+        if (err){
+            console.log("Eroare preluare seturi:", err);
+            afisareEroare(res, 2);
+            return;
+        }
+        let seturiMap = {};
+        for (let row of rez.rows){
+            if (!seturiMap[row.set_id]){
+                seturiMap[row.set_id] = {
+                    id: row.set_id,
+                    nume_set: row.nume_set,
+                    descriere_set: row.descriere_set,
+                    produse: []
+                };
+            }
+            seturiMap[row.set_id].produse.push({
+                id: row.produs_id,
+                nume: row.nume,
+                pret: parseFloat(row.pret),
+                imagine: row.imagine
+            });
+        }
+        let seturi = Object.values(seturiMap).map(function(set){
+            let n = set.produse.length;
+            let suma = set.produse.reduce((acc, p) => acc + p.pret, 0);
+            let reducereProcent = Math.min(5, n) * 5;
+            set.pret_set = suma * (1 - reducereProcent / 100);
+            set.reducere_procent = reducereProcent;
+            return set;
+        });
+        res.render("pagini/seturi", { seturi: seturi });
+    });
+});
+
 app.get("/produs/:id", function(req, res){
     client.query(`SELECT * FROM produse WHERE id = $1`, [req.params.id], function(err, rez){
         if (err){
             console.log("Eroare produs individual:", err);
             afisareEroare(res, 2);
+            return;
         }
-        else {
-            // Verificăm dacă produsul există
-            if (rez.rowCount == 0){
-                afisareEroare(res, 404, "Produs inexistent", "Produsul cerut nu a putut fi găsit.");
+        if (rez.rowCount == 0){
+            afisareEroare(res, 404, "Produs inexistent", "Produsul cerut nu a putut fi găsit.");
+            return;
+        }
+        let produs = rez.rows[0];
+        let querySeturiProdus = `
+            SELECT s.id AS set_id, s.nume_set, s.descriere_set,
+                   p.id AS produs_id, p.nume, p.pret, p.imagine
+            FROM seturi s
+            JOIN asociere_set a ON s.id = a.id_set
+            JOIN produse p ON p.id = a.id_produs
+            WHERE s.id IN (
+                SELECT id_set FROM asociere_set WHERE id_produs = $1
+            )
+            ORDER BY s.id, p.id
+        `;
+        client.query(querySeturiProdus, [req.params.id], function(err2, rez2){
+            if (err2){
+                console.log("Eroare seturi produs:", err2);
+                res.render("pagini/produs", { produs: produs, seturi: [] });
+                return;
             }
-            else {
-                res.render("pagini/produs", {
-                    produs: rez.rows[0]
+            let seturiMap = {};
+            for (let row of rez2.rows){
+                if (!seturiMap[row.set_id]){
+                    seturiMap[row.set_id] = {
+                        id: row.set_id,
+                        nume_set: row.nume_set,
+                        descriere_set: row.descriere_set,
+                        produse: []
+                    };
+                }
+                seturiMap[row.set_id].produse.push({
+                    id: row.produs_id,
+                    nume: row.nume,
+                    pret: parseFloat(row.pret),
+                    imagine: row.imagine
                 });
             }
-        }
+            let seturi = Object.values(seturiMap).map(function(set){
+                let n = set.produse.length;
+                let suma = set.produse.reduce((acc, p) => acc + p.pret, 0);
+                let reducereProcent = Math.min(5, n) * 5;
+                set.pret_set = suma * (1 - reducereProcent / 100);
+                set.reducere_procent = reducereProcent;
+                return set;
+            });
+            res.render("pagini/produs", { produs: produs, seturi: seturi });
+        });
     });
 });
 

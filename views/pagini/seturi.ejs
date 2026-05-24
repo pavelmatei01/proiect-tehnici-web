@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <%- include('../fragmente/head') %>
+    <link rel="stylesheet" href="/resurse/css/seturi.css">
+    <title>TrainMag - Seturi de Produse</title>
+</head>
+<body>
+    <%- include('../fragmente/header') %>
+
+    <main id="main-seturi">
+        <h1><i class="fa-solid fa-layer-group"></i> Seturi de Produse</h1>
+        <p class="seturi-intro">
+            Alege un set complet și beneficiezi de reducere automată.
+            Cu cât setul conține mai multe produse, cu atât reducerea este mai mare (până la 25%).
+        </p>
+
+        <% if (seturi.length === 0) { %>
+            <p style="text-align:center; color:#888;">Nu există seturi disponibile momentan.</p>
+        <% } else { %>
+        <div class="grid-seturi">
+            <% for (let set of seturi) { %>
+            <article class="card-set">
+                <div class="card-set-header">
+                    <h2><i class="fa-solid fa-cubes-stacked"></i> <%- set.nume_set %></h2>
+                    <p><%- set.descriere_set %></p>
+                </div>
+
+                <div class="card-set-body">
+                    <ul class="produse-set-lista">
+                        <% for (let p of set.produse) { %>
+                        <li>
+                            <a href="/produs/<%- p.id %>" class="produs-set-item" title="<%- p.nume %>">
+                                <img src="/resurse/imagini/produse/<%- p.imagine %>" alt="<%- p.nume %>">
+                                <div class="produs-set-info">
+                                    <span class="nume-produs"><%- p.nume %></span>
+                                    <span class="pret-produs"><%- p.pret.toFixed(2) %> Lei</span>
+                                </div>
+                            </a>
+                        </li>
+                        <% } %>
+                    </ul>
+                </div>
+
+                <div class="card-set-footer">
+                    <span class="badge-reducere">
+                        -<%- set.reducere_procent %>% (<%- set.produse.length %> produse)
+                    </span>
+                    <div class="pret-set">
+                        <%- set.pret_set.toFixed(2) %> Lei
+                        <small>față de <%- set.produse.reduce((s, p) => s + p.pret, 0).toFixed(2) %> Lei fără reducere</small>
+                    </div>
+                </div>
+            </article>
+            <% } %>
+        </div>
+        <% } %>
+    </main>
+
+    <%- include('../fragmente/footer') %>
+</body>
+</html>

@@ -89,6 +89,7 @@ window.onload = function() {
                 p.style.display = "block";
             }
         }
+        marcheazaCelMaiIeftin();
     };
 
     function sorteaza(semn) {
@@ -105,6 +106,7 @@ window.onload = function() {
             return semn * (rA - rB);
         });
         for (let p of vProds) grid.appendChild(p);
+        marcheazaCelMaiIeftin();
     }
 
     document.getElementById("sortCrescNume").onclick = function() {
@@ -151,6 +153,42 @@ window.onload = function() {
                 grid.appendChild(a);
                 a.style.display = "block";
             }
+            marcheazaCelMaiIeftin();
         }
     };
+
+    function marcheazaCelMaiIeftin() {
+        for (let badge of document.querySelectorAll(".badge-cel-mai-ieftin")) {
+            badge.remove();
+        }
+        for (let art of document.querySelectorAll(".produs.cel-mai-ieftin")) {
+            art.classList.remove("cel-mai-ieftin");
+        }
+
+        let produse = Array.from(document.getElementsByClassName("produs"))
+            .filter(p => p.style.display !== "none");
+
+        let minPeCat = {};
+        for (let p of produse) {
+            let cat = p.querySelector(".val-categorie").textContent.trim();
+            let pret = parseFloat(p.querySelector(".val-pret").textContent.trim());
+            if (!(cat in minPeCat) || pret < minPeCat[cat]) {
+                minPeCat[cat] = pret;
+            }
+        }
+
+        for (let p of produse) {
+            let cat = p.querySelector(".val-categorie").textContent.trim();
+            let pret = parseFloat(p.querySelector(".val-pret").textContent.trim());
+            if (pret === minPeCat[cat]) {
+                p.classList.add("cel-mai-ieftin");
+                let badge = document.createElement("div");
+                badge.className = "badge-cel-mai-ieftin";
+                badge.innerHTML = `<i class="bi bi-award-fill"></i> Cel mai ieftin din categorie`;
+                p.insertBefore(badge, p.firstChild);
+            }
+        }
+    }
+
+    marcheazaCelMaiIeftin();
 };

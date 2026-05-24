@@ -212,6 +212,45 @@ body.dark .filtre-container .form-label { color:#f8fafc; }
     box-shadow: 0 4px 16px rgba(0,0,0,0.4);
 }
 
+/* cel mai ieftin produs */
+.badge-cel-mai-ieftin {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, #15803d, #22c55e);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 0.75rem 0.3rem 0.6rem;
+    border-radius: 0 0 0.6rem 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+    letter-spacing: 0.02em;
+    animation: puls-ieftin 1.8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes puls-ieftin {
+    0%, 100% { box-shadow: 2px 2px 8px rgba(0,0,0,0.25); }
+    50%       { box-shadow: 2px 2px 16px rgba(34, 197, 94, 0.7); }
+}
+
+.produs.cel-mai-ieftin {
+    outline: 2px solid #22c55e;
+    outline-offset: -2px;
+}
+
+body.dark .badge-cel-mai-ieftin {
+    background: linear-gradient(135deg, #14532d, #16a34a);
+}
+
+body.dark .produs.cel-mai-ieftin {
+    outline-color: #4ade80;
+}
+
 @media screen and (max-width: 850px) {
     .grid-produse {
         grid-template-columns: 1fr;

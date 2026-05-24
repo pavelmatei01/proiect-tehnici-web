@@ -1,0 +1,217 @@
+#main-seturi {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+#main-seturi h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+}
+
+.seturi-intro {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.grid-seturi {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem;
+}
+
+.card-set {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-set-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 1rem 1.2rem;
+}
+
+.card-set-header h2 {
+    margin: 0 0 0.3rem 0;
+    font-size: 1.2rem;
+}
+
+.card-set-header p {
+    margin: 0;
+    font-size: 0.88rem;
+    opacity: 0.85;
+}
+
+.card-set-body {
+    padding: 1rem 1.2rem;
+    flex: 1;
+}
+
+.produse-set-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.produs-set-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    border: 1px solid #eee;
+    border-radius: 7px;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+}
+
+.produs-set-item:hover {
+    background: #f0f6ff;
+}
+
+.produs-set-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 5px;
+    flex-shrink: 0;
+}
+
+.produs-set-info {
+    flex: 1;
+}
+
+.produs-set-info .nume-produs {
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: block;
+}
+
+.produs-set-info .pret-produs {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+.card-set-footer {
+    background: #f7f9fc;
+    border-top: 1px solid #e8edf3;
+    padding: 0.9rem 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.badge-reducere {
+    background: #e74c3c;
+    color: #fff;
+    border-radius: 5px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.pret-set {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a3a5c;
+}
+
+.pret-set small {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #888;
+    display: block;
+}
+
+/* Sectiunea seturi in pagina proprie a produsului */
+#sectiune-seturi-produs {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #e8edf3;
+}
+
+#sectiune-seturi-produs h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: #1a3a5c;
+}
+
+.seturi-produs-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.card-set-mic {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+}
+
+.card-set-mic-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 0.6rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.card-set-mic-header h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.card-set-mic-header .pret-set-mic {
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.card-set-mic-header .badge-reducere {
+    font-size: 0.75rem;
+}
+
+.card-set-mic-body {
+    padding: 0.7rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.produs-set-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.35rem 0.6rem;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s;
+    font-size: 0.85rem;
+}
+
+.produs-set-chip:hover {
+    background: #f0f6ff;
+}
+
+.produs-set-chip img {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    border-radius: 4px;
+}

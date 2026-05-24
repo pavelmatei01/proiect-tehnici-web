@@ -136,7 +136,6 @@ app.get("/produs/:id", function(req, res){
                 afisareEroare(res, 404, "Produs inexistent", "Produsul cerut nu a putut fi găsit.");
             }
             else {
-                // Trimitem datele produsului către pagină (folosim "produs" ca nume variabilă)
                 res.render("pagini/produs", {
                     produs: rez.rows[0]
                 });

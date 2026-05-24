@@ -11,11 +11,21 @@
 
 <main>
     <section class="filtre-container container mt-4 shadow-sm">
+        <%
+        /* ── Valori derivate din BD pentru atributele inputurilor ── */
+        const _scaraVals  = locals.produse.map(p => parseInt(p.scara_numitor)).filter(Boolean);
+        const _maxScara   = _scaraVals.length ? Math.max(..._scaraVals) : 250;
+        const _stepScara  = Math.max(1, Math.round(_maxScara / 25));
+        const _maxNume    = Math.max(...locals.produse.map(p => p.nume        ? p.nume.length        : 0));
+        const _maxDesc    = Math.max(...locals.produse.map(p => p.descriere   ? p.descriere.length   : 0));
+        const _digVals    = [...new Set(locals.produse.map(p => p.este_digital))];
+        const _subcatDin  = [...new Set(locals.produse.map(p => p.subcategorie).filter(Boolean))].sort();
+        %>
         <div class="row g-3">
             <!-- Nume Produs -->
             <div class="col-md-6 col-lg-4">
                 <label for="inp-nume" class="form-label fw-bold">Nume produs:</label>
-                <input type="text" id="inp-nume" class="form-control" placeholder="Ex: Locomotivă">
+                <input type="text" id="inp-nume" class="form-control" placeholder="Ex: Locomotivă" maxlength="<%- _maxNume %>">
             </div>
 
             <!-- Range Scara -->
@@ -23,8 +33,8 @@
                 <label for="inp-scara" class="form-label fw-bold">Scară (1:x, x &gt; val):</label>
                 <div class="d-flex align-items-center gap-2">
                     <span class="text-muted small">0</span>
-                    <input type="range" id="inp-scara" class="form-range flex-grow-1" value="0" min="0" max="250" step="10">
-                    <span class="text-muted small">250 <span id="infoRange" class="badge text-bg-secondary">(0)</span></span>
+                    <input type="range" id="inp-scara" class="form-range flex-grow-1" value="0" min="0" max="<%- _maxScara %>" step="<%- _stepScara %>">
+                    <span class="text-muted small"><%- _maxScara %> <span id="infoRange" class="badge text-bg-secondary">(0)</span></span>
                 </div>
             </div>
 
@@ -32,12 +42,14 @@
             <div class="col-md-6 col-lg-4">
                 <label class="form-label d-block fw-bold">Sistem digital:</label>
                 <div class="btn-group w-100" role="group" aria-label="Filtru sistem digital">
+                    <% if (_digVals.includes(true)) { %>
                     <input type="radio" class="btn-check" name="gr_digital" id="rad-da" value="da" autocomplete="off">
                     <label class="btn btn-outline-primary" for="rad-da">Da</label>
-
+                    <% } %>
+                    <% if (_digVals.includes(false)) { %>
                     <input type="radio" class="btn-check" name="gr_digital" id="rad-nu" value="nu" autocomplete="off">
                     <label class="btn btn-outline-primary" for="rad-nu">Nu</label>
-
+                    <% } %>
                     <input type="radio" class="btn-check" name="gr_digital" id="rad-toate" value="toate" autocomplete="off" checked>
                     <label class="btn btn-outline-primary" for="rad-toate">Toate</label>
                 </div>
@@ -46,8 +58,8 @@
             <!-- Floating Label pentru Textarea -->
             <div class="col-md-6 col-lg-4">
                 <div class="form-floating h-100">
-                    <textarea class="form-control" id="inp-descriere" placeholder="Introduceți o descriere" style="height: 100px; resize: none;"></textarea>
-                    <label for="inp-descriere">Descriere (minim 3 caractere)</label>
+                    <textarea class="form-control" id="inp-descriere" placeholder=" " style="height: 100px; resize: none;" maxlength="<%- _maxDesc %>"></textarea>
+                    <label for="inp-descriere">Introduceți o descriere (min. 3 caractere)</label>
                     <div class="invalid-feedback">
                         Descrierea este prea scurtă (minim 3 caractere).
                     </div>
@@ -57,18 +69,12 @@
             <!-- Checkboxes clasice - Subcategorii -->
             <div class="col-md-6 col-lg-4">
                 <label class="form-label d-block fw-bold">Subcategorii:</label>
+                <% for (let _sc of _subcatDin) { %>
                 <div class="form-check form-check-inline mt-2">
-                    <input class="form-check-input inp-subcateg" type="checkbox" id="chk-loco" value="locomotive" checked>
-                    <label class="form-check-label" for="chk-loco">Locomotive</label>
+                    <input class="form-check-input inp-subcateg" type="checkbox" id="chk-<%- _sc %>" value="<%- _sc %>" checked>
+                    <label class="form-check-label" for="chk-<%- _sc %>"><%- _sc.charAt(0).toUpperCase() + _sc.slice(1).replace(/_/g,' ') %></label>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input inp-subcateg" type="checkbox" id="chk-vag" value="vagoane" checked>
-                    <label class="form-check-label" for="chk-vag">Vagoane</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input inp-subcateg" type="checkbox" id="chk-alt" value="altele" checked>
-                    <label class="form-check-label" for="chk-alt">Altele</label>
-                </div>
+                <% } %>
             </div>
 
             <!-- Select - Categorie -->

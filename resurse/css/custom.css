@@ -11859,3 +11859,16 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.form-control.is-invalid,
+.form-select.is-invalid {
+  border-color: #dc3545 !important;
+}
+
+.form-control.is-valid,
+.form-select.is-valid {
+  border-color: #198754 !important;
+}
+
+.is-invalid ~ .invalid-feedback {
+  display: block !important;
+}

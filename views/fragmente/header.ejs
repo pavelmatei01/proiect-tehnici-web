@@ -1,4 +1,3 @@
-<!-- Scriptul blocant care aplica tema inainte de a se randa restul paginii (previne flash-ul alb) -->
 <script src="/resurse/js/tema.js"></script>
 
 <header>
@@ -35,8 +34,6 @@
         <a href="/produse" title="Catalog Produse"><i class="fa-solid fa-box-open"></i> Produse</a>
         <ul class="submeniu">
             <li><a href="/produse" title="Toate produsele">Toate</a></li>
-            
-            <!-- Generarea dinamică a subcategoriilor din baza de date -->
             <% if (locals.optiuniMeniu) { %>
                 <% for (let opt of locals.optiuniMeniu) { %>
                     <li>

@@ -1,12 +1,12 @@
 window.onload = function() {
     let grid = document.querySelector(".grid-produse");
     let articoleInitiale = Array.from(document.getElementsByClassName("produs"));
-
     document.getElementById("inp-scara").oninput = function() {
         document.getElementById("infoRange").innerHTML = `(${this.value})`;
     };
 
     let inpDescriere = document.getElementById("inp-descriere");
+    //se pun clasele bootstrap "is-valid" sau "is-invalid" in functie de lungimea textului introdus in campul de descriere, pentru a oferi feedback vizual utilizatorului despre validitatea descrierii
     inpDescriere.oninput = function() {
         let text = this.value.trim();
         if (text.length > 0 && text.length < 3) {
@@ -73,7 +73,14 @@ window.onload = function() {
             let subcat = p.querySelector(".val-subcategorie").innerHTML.trim().toLowerCase();
             let era = p.querySelector(".val-era").innerHTML.trim().toLowerCase();
             let materiale = p.querySelector(".val-materiale") ? p.querySelector(".val-materiale").innerHTML.trim().toLowerCase() : "";
-
+            //conditia 1, daca numele produsului include textul introdus in campul de nume (ignorand majuscule/minuscule)
+            //conditia 2, daca scara produsului este mai mare decat valoarea introdusa in campul de scara
+            //conditia 3, daca categoria produsului este egala cu cea selectata in campul de categorie sau daca in campul de categorie este selectata optiunea "toate"
+            //conditia 4, daca produsul este digital sau nu, in functie de optiunea selectata in campul de digital/analog
+            //conditia 5, daca descrierea produsului include textul introdus in campul de descriere (ignorand majuscule/minuscule) sau daca campul de descriere este gol
+            //conditia 6, daca subcategoria produsului este bifata in lista de subcategorii sau daca niciuna nu este bifata (adica se accepta toate subcategoriile)
+            //conditia 6_era, daca era produsului este egala cu cea introdusa in campul de era sau daca campul de era este gol
+            //conditia 7, daca materialele produsului includ macar unul dintre materialele selectate in campul de materiale sau daca niciun material nu este selectat (adica se accepta toate materialele)
             let cond1 = nume.includes(vNume);
             let cond2 = scara > vScara;
             let cond3 = (vCat === "toate" || cat === vCat);
@@ -81,10 +88,7 @@ window.onload = function() {
             let cond5 = (vDesc === "" || descriere.includes(vDesc));
             let cond6_era = (vEra === "" || era === vEra);
 
-            let subcatType = "altele";
-            if (subcat.includes("locomotive")) subcatType = "locomotive";
-            else if (subcat.includes("vagoane")) subcatType = "vagoane";
-            let cond6 = subcategoriiBifate.includes(subcatType);
+            let cond6 = subcategoriiBifate.includes(subcat);
 
             let cond7 = materialeSelectate.length === 0 ||
                 materialeSelectate.some(m => materiale.includes(m));

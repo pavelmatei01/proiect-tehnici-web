@@ -1,9 +1,8 @@
 :root {
-    /* Cromatica adaptată pentru TrainMag */
-    --cl-primara: #1E3A8A;     /* Albastru închis */
-    --cl-secundara: #F59E0B;   /* Galben / Portocaliu */
-    --cl-marcare: #f1f5f9;     /* Gri-albastru foarte deschis */
-    --cl-border: #cbd5e1;      /* Gri pentru borduri */
+    --cl-primara: #1E3A8A;
+    --cl-secundara: #F59E0B;
+    --cl-marcare: #f1f5f9;
+    --cl-border: #cbd5e1;
 }
 
 main {
@@ -14,7 +13,6 @@ main {
     margin: 0 auto;
 }
 
-/* Stilizare sumară pentru zona de filtre */
 .filtre-container {
     background-color: var(--cl-marcare);
     padding: 1rem;
@@ -35,14 +33,12 @@ main {
     overflow: hidden;
     position: relative;
     background-color: white;
-    padding-bottom: 4rem; /* Spațiu lăsat liber la bază pentru butonul de coș */
+    padding-bottom: 4rem;
 }
 
-/* Antetul produsului */
-/* Antetul produsului (Fundal albastru închis, text static alb) */
 .grid-produse .produs h3 {
-    background-color: var(--cl-primara); /* Albastru închis */
-    color: #ffffff;                      /* Cuvântul "Nume:" cu alb */
+    background-color: var(--cl-primara);
+    color: #ffffff;
     text-align: center;
     margin-top: 0;
     padding-top: 0.8rem;
@@ -50,19 +46,16 @@ main {
     font-size: 1.1rem;
 }
 
-/* Numele produsului care este link (Galben) */
 .grid-produse .produs h3 a {
-    color: var(--cl-secundara)!important;          /* Numele locomotivei cu galben */
+    color: var(--cl-secundara)!important;
     text-decoration: none;
-    transition: color 0.2s ease;         /* Tranziție fină la hover */
+    transition: color 0.2s ease;
 }
 
-/* Culoarea link-ului la trecerea cu mouse-ul (Albastru deschis) */
 .grid-produse .produs h3 a:hover {
-    color: #93c5fd;                      /* Albastru deschis la hover */
+    color: #93c5fd;
 }
 
-/* Layout Flex pentru Tabel (stânga) și Imagine (dreapta) */
 .info-prod-layout {
     display: flex;
     align-items: center;
@@ -108,7 +101,6 @@ main {
     background-color: white;
 }
 
-/* Textul din interiorul produsului */
 .grid-produse .produs p.descriere {
     padding: 0.5rem 1rem;
     text-align: justify;
@@ -122,7 +114,6 @@ main {
     margin: 0.5rem 0;
 }
 
-/* Butonul Selectează absolut poziționat */
 .selecteaza-cos {
     display: inline-block;
     background-color: var(--cl-secundara);
@@ -160,9 +151,9 @@ body.dark .filtre-container textarea,
 body.dark .grid-produse .produs p.descriere,
 body.dark .grid-produse .produs td,
 body.dark .grid-produse .produs th { color:#f8fafc; }
-body.dark .filtre-container input,
-body.dark .filtre-container select,
-body.dark .filtre-container textarea,
+body.dark .filtre-container input:not(.is-invalid):not(.is-valid):not(.form-check-input),
+body.dark .filtre-container select:not(.is-invalid):not(.is-valid),
+body.dark .filtre-container textarea:not(.is-invalid):not(.is-valid),
 body.dark .imagine-container img { background:#0f172a; border-color:#334155; }
 body.dark .grid-produse .produs h3 { background:#1e3a8a; color:#fff; }
 body.dark .grid-produse .produs h3 a { color:#fde68a !important; }
@@ -171,6 +162,14 @@ body.dark .tabel-container td:first-child { background:#1e293b; }
 body.dark .selecteaza-cos { background:#f59e0b; color:#111827; }
 body.dark .selecteaza-cos:hover { background:#fde68a; border-color:#f59e0b; }
 body.dark .selectat { color:#bbf7d0; background:#14532d; }
+
+body.dark .filtre-container .form-check-input { background-color:#ffffff; border-color:#94a3b8; }
+body.dark .filtre-container .form-check-input:checked { background-color:#F59E0B; border-color:#F59E0B; }
+body.dark .filtre-container select option:checked { background:#1E3A8A; color:#fff; }
+body.dark .filtre-container ::placeholder { color:#94a3b8; opacity:1; }
+body.dark .filtre-container .text-muted { color:#94a3b8 !important; }
+body.dark .filtre-container .form-floating > label { color:#94a3b8; }
+body.dark .filtre-container .form-label { color:#f8fafc; }
 
 .grid-filtre .grup-radio,
 .grid-filtre .grup-checkbox {
@@ -191,7 +190,6 @@ body.dark .selectat { color:#bbf7d0; background:#14532d; }
     margin-top: 0.3rem;
 }
 
-/* Pentru ca slidere-ul range sa arate bine inline cu capetele */
 .grid-filtre label div {
     display: flex;
     align-items: center;
@@ -199,32 +197,30 @@ body.dark .selectat { color:#bbf7d0; background:#14532d; }
     margin-top: 0.4rem;
 }
 
-/* Div-ul flotant care afișează suma calculată */
 .info-suma {
-    position: fixed;         /* rămâne pe ecran indiferent de scroll */
-    bottom: 2rem;            /* distanță față de marginea de jos */
-    right: 2rem;             /* distanță față de marginea din dreapta */
-    z-index: 9999;           /* apare deasupra oricărui alt element */
-    padding: 1rem 1.5rem;    /* spațiu interior */
-    border-radius: 0.75rem;  /* colțuri rotunjite */
-    background: #000000;     /* fundal negru */
-    color: var(--cl-secundara); /* text în culoarea de highlight (galben) */
-    font-weight: bold;       /* text îngroșat */
-    font-size: 1.1rem;       /* mărime ușor mai mare */
-    text-align: center;      /* centrare text */
-    box-shadow: 0 4px 16px rgba(0,0,0,0.4); /* umbră pentru profunzime */
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 9999;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    background: #000000;
+    color: var(--cl-secundara);
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
 }
 
-/* Trecerea pe o singură coloană pentru ecrane mici */
 @media screen and (max-width: 850px) {
     .grid-produse {
         grid-template-columns: 1fr;
     }
-    
+
     .info-prod-layout {
         flex-direction: column;
     }
-    
+
     .tabel-container, .imagine-container {
         width: 100%;
         margin-bottom: 0.5rem;

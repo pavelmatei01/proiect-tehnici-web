@@ -23,7 +23,9 @@ $p-afisare: $p-pas - $p-tranzitie;
     position: relative;
     width: 100%;
     height: 500px;
+    
     overflow: hidden;
+    
     border: 15px solid transparent;
     border-image: url('/resurse/imagini/fundal.jpg') 15% stretch;
     background-color: var(--culoare-background);
@@ -31,7 +33,7 @@ $p-afisare: $p-pas - $p-tranzitie;
     &:hover figure {
         animation-play-state: paused;
     }
-
+   
     figure {
         position: absolute;
         top: 0;
@@ -70,16 +72,19 @@ $p-afisare: $p-pas - $p-tranzitie;
 }
 
 @keyframes animatie-decupare {
+   
     0% {
         clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 0%, 100% 0%);
         opacity: 1;
         z-index: 10;
     }
+    
     #{$p-afisare} {
         clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 0%, 100% 0%);
         opacity: 1;
         z-index: 10;
     }
+    
     #{$p-pas} {
         clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 0%, 100% 0%);
         opacity: 1;
@@ -89,15 +94,18 @@ $p-afisare: $p-pas - $p-tranzitie;
         opacity: 0;
         z-index: 1;
     }
+    
     #{100% - $p-tranzitie - 0.001%} {
         opacity: 0;
         z-index: 1;
     }
+    
     #{100% - $p-tranzitie} {
         clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 0%, 100% 0%);
         opacity: 1;
         z-index: 5;
     }
+
     100% {
         clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%, 0% 0%, 100% 0%, 100% 100%, 50% 100%, 50% 0%, 100% 0%);
         opacity: 1;

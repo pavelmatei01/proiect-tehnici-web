@@ -38,7 +38,7 @@ client.connect().then(function(){
     console.log("Conexiune baza de date realizata!");
     client.query("SELECT unnest(enum_range(null::categ_tren)) AS categorie", function(err, rezOptiuni) {
         if (!err) {
-            // Salvăm opțiunile global. Ele vor fi văzute automat de header.ejs
+           
             app.locals.optiuniMeniu = rezOptiuni.rows.map(rand => rand.categorie);
         }
     });
@@ -87,25 +87,25 @@ app.get("/favicon.ico", function(req, res){
     res.sendFile(path.join(__dirname,"/resurse/imagini/ico/favicon.ico"))
 });
 
-// Rută pentru afișarea tuturor produselor (cu opțiune de filtrare)
+
 app.get("/produse", function(req, res){
     let clauzaWhere = "";
     let parametri = [];
     
-    // Dacă primim un filtru în URL (ex: ?categorie=machete_feroviare)
+  
     if (req.query.categorie) {
         clauzaWhere = " WHERE categorie = $1";
         parametri.push(req.query.categorie);
     }
     
-    // Folosim array-ul parametri pentru a trimite sigur datele către baza de date
+    
     client.query(`SELECT * FROM produse${clauzaWhere}`, parametri, function(err, rez){
-        if (err){
+       if (err){
             console.log("Eroare preluare produse:", err);
-            afisareEroare(res, 2); // Asigură-te că ai un identificator "2" în erori.json sau adaptează-l (ex: 500)
+            afisareEroare(res, 2); 
         }
         else {
-            // Extragem dinamic opțiunile enumerației categ_tren
+            
             client.query("SELECT * FROM unnest(enum_range(null::categ_tren))", function(err, rezOptiuni){
                 if (err){
                     console.log("Eroare preluare enum:", err);
@@ -114,7 +114,7 @@ app.get("/produse", function(req, res){
                 else {
                     res.render("pagini/produse", {
                         produse: rez.rows,
-                        optiuni: rezOptiuni.rows // Le poți folosi mai târziu în EJS pentru un meniu <select>
+                        optiuni: rezOptiuni.rows 
                     });
                 }
             });
@@ -123,9 +123,8 @@ app.get("/produse", function(req, res){
 });
 
 
-// Rută pentru afișarea unui produs individual
+
 app.get("/produs/:id", function(req, res){
-    // Folosim $1 pentru a proteja id-ul (evitare SQL Injection)
     client.query(`SELECT * FROM produse WHERE id = $1`, [req.params.id], function(err, rez){
         if (err){
             console.log("Eroare produs individual:", err);
